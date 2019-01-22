@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+.whatever {
+    
+    text-align: center;
+    font-family: 'Lora', serif;
+    background-image: url("../../Photos/thumb-1920-467732.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+h3 {
+    font-size: 20px;
+}

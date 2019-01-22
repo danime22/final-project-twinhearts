@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+.nav-link {
+    font-weight: bold;
+    color: white;
+    font-family: 'Abril Fatface', cursive;
+    letter-spacing: 3px;
+    font-size: 20px;
+
+}
+
+.iconify {
+    height: 35px;
+    width: 40px;
+}
