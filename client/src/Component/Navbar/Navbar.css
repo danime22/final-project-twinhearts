@@ -13,3 +13,25 @@
     height: 35px;
     width: 40px;
 }
+
+.container-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+ 
+}
+
+.form-group {
+    /* background: lightblue; */
+    margin: 0.5em;
+    width: 250px;
+    text-align: center;
+}
+
+
+
+
+.form-been {
+    border: 2px solid blue;
+    width: 72px;
+}

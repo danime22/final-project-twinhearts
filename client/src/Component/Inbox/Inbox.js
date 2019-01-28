@@ -18,21 +18,39 @@ class Inbox extends Component {
 
             <div className="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul className="navbar-nav ml-auto">
+
                     <li className="nav-item">
-                    <Link to="Notification" className={window.location.pathname === "Notification"}>
-                    <span class="iconify" data-icon="twemoji:bell" data-inline="false"></span>
-                  </Link>
+
+                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                            <span class="iconify" data-icon="flat-ui:mail" data-inline="false"></span>
+                        </Link>
                     </li>
+
                     <li className="nav-item">
-                        
-                      <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
-                      <span class="iconify" data-icon="twemoji:incoming-envelope" data-inline="false"></span>
-                      </Link>
+
+                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                            <span class="iconify" data-icon="emojione:red-heart" data-inline="false"></span>
+                        </Link>
                     </li>
+
                     <li className="nav-item">
-                    <h3> <Link to="SignIn" className={window.location.pathname === "SignIn" ? "nav-link active" : "nav-link"}>
-                    Log Out
-          </Link></h3>
+
+                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                            <span class="iconify" data-icon="whh:skypeonline" data-inline="false"></span>
+                        </Link>
+                    </li>
+
+                    <li className="nav-item">
+
+                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                            Edit Profile
+                    </Link>
+                    </li>
+
+                    <li className="nav-item">
+                        <h3> <Link to="SignIn" className={window.location.pathname === "SignIn" ? "nav-link active" : "nav-link"}>
+                            Log Out
+  </Link></h3>
                     </li>
                 </ul>
             </div>
@@ -43,52 +61,7 @@ class Inbox extends Component {
             </NavItem>
         </Nav>
 
-                <Container>
-
-                    <Row>
-
-                        <Col>
-                        <Table bordered>
-                  
-                        <tbody>
-                          <tr>
-                            <th scope="row"> <Link to="Inbox" className={window.location.pathname === "Inbox"}>
-                            <i class="material-icons">inbox</i>
-                            Inbox</Link></th>
-                            <td>Table cell</td>
-                           
-                          </tr>
-                          <tr>
-                            <th scope="row"><Link to="Inbox" className={window.location.pathname === "Inbox"}>
-                            <i class="material-icons">send</i>
-                            Sent Items</Link></th>
-                            <td>Table cell</td>
-                           
-                          </tr>
-                          <tr>
-                            <th scope="row"><Link to="Inbox" className={window.location.pathname === "Inbox"}>
-                            <i class="material-icons">drafts</i>
-                            Drafts</Link></th>
-                            <td>Table cell</td>
-                            
-                          </tr>
-                          <tr>
-                          <th scope="row"><Link to="Inbox" className={window.location.pathname === "Inbox"}>
-                          <i class="material-icons">delete</i>
-                          Trash</Link></th>
-                          <td>Table cell</td>
-                         
-                        </tr>
-                        </tbody>
-                      </Table>
-                        </Col>
-                    </Row>
-                    <h3> <Link to="Members" className={window.location.pathname === "Members"}>
-                    Submmit
-                  </Link></h3>
-                </Container>
-               
-
+                
 
             </div>
         )
