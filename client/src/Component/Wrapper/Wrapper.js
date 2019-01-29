@@ -5,13 +5,6 @@ import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./Wrapper.css";
 
 
-const Footer = {
-    textAlign: "center",
-    backgroundColor: "yellow",
-    height: "50px",
-    padding: "5px"
-}
-
 const contain = {
     height: "50vh",
     margin: "25vh auto 0"
@@ -19,6 +12,14 @@ const contain = {
 
 
 class WrapPage extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            username: "",
+            password: ""
+        };
+    }
 
     render() {
         return (
@@ -43,7 +44,7 @@ class WrapPage extends Component {
                     </Link></h3>
                         </Form>
                         <h5>Not yet a member? </h5>
-                        <Link to="Registration" className={window.location.pathname === "Registration"}>Register</Link>
+                        <Link to="RegistrationPage" className={window.location.pathname === "RegistrationPage"}>Register</Link>
                     </div>
                 </Container>
             </div>

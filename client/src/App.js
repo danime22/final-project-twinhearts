@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Wrapper from "./Component/Wrapper/Wrapper";
-import Registration from "./Component/Registration/Registration";
-import Members from "./Component/Members/Members";
+import RegistrationPage from "./Component/RegistrationPage/RegistrationPage";
+import MembersOnlinePage from "./Component/MembersOnlinePage/MembersOnlinePage";
+import ProfilePage from "./Component/ProfilePage/ProfilePage";
 import Inbox from "./Component/Inbox/Inbox";
+import Search from "./Component/Search/Search";
+
+class App extends Component {
 
 
 
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Route exact path="/" component={Wrapper} />
-        <Route exact path="/Registration" component={Registration} />
-       <Route exact path="/Members" component={Members} />
-        <Route exact path="/Inbox" component={Inbox} />
-      </div>
-  
-    </Router>
-    
-  )
+  render() {
+    return (
+      <Router>
+        <div>
+          <Route exact path="/" component={Wrapper} />
+          <Route exact path="/register" component={RegistrationPage} />
+          <Route exact path="/onlineMembers" component={MembersOnlinePage} />
+          <Route exact path="/Inbox" component={Inbox} />
+          <Route exact path="/Search" component={Search} />
+          <Route exact path="/profile/:id" component={ProfilePage} />
+        </div>
+
+      </Router>
+
+    )
+
+  }
 
 }
 

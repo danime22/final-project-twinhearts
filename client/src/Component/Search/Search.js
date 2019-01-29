@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {Container, Row, Col};
+import {Link} from "react-router-dom";
+import { FormGroup, Input, } from 'reactstrap';
 
 class Search extends Component {
 
@@ -11,31 +12,10 @@ class Search extends Component {
 
     render() {
         return(
-            <Container>
-            <Row>
-            <Col>
-            <Form>
-            <div className="ageSelection">
-                <h1>Search</h1>
-                <FormGroup>
-                    <Label for="exampleSelect">Gender</Label>
-
-                    <Input type="select" name="select" id="ageSelection">
-                        <option>Male</option>
-                        <option>Female</option>
-
-                    </Input>
-
-                </FormGroup>
-            </div>
-
-
-            <div className="genderSelection">
-
-                <FormGroup>
-                    <Label for="exampleSelect">Miles</Label>
-
-                    <Input type="select" name="select" id="ageSelection">
+            <div className="container-group">
+            <div className="form-group">
+                Miles: <FormGroup >
+                    <Input type="select" name="select" >
                         <option>5 miles</option>
                         <option>10 miles</option>
                         <option>15 miles</option>
@@ -52,13 +32,23 @@ class Search extends Component {
 
                 </FormGroup>
             </div>
+            <div className="form-group">
 
-            <div className="genderSelection">
 
-                <FormGroup>
-                    <Label for="exampleSelect"><h5>City</h5></Label>
+                Gender: <FormGroup >
+                    <Input type="select" name="select">
+                        <option>Male</option>
+                        <option>Female</option>
 
-                    <Input type="select" name="select" id="ageSelection">
+                    </Input>
+
+                </FormGroup>
+            </div>
+
+            <div className="form-group">
+
+                City: <FormGroup className="form-group">
+                    <Input type="select" name="select">
                         <option>Houston City</option>
                         <option>San Antonio City</option>
                         <option>Dallas City</option>
@@ -103,81 +93,74 @@ class Search extends Component {
                     </Input>
 
                 </FormGroup>
-            </div>
-
-
-            <h5>Age from:</h5>
-            <div className="genderSelection">
-                <div className="select2">
-                    <FormGroup>
-
-
-                        <Input type="select" name="select" id="ageSelection">
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
-                            <option>31</option>
-                            <option>32</option>
-                            <option>33</option>
-                            <option>34</option>
-                            <option>35</option>
-                            <option>36</option>
-                            <option>37</option>
-                        </Input>
-
-                    </FormGroup>
-                </div>
-
-                <div className="to">to</div>
-
-                <div className="select1">
-                    <FormGroup>
-
-                        <Input type="select" name="select" id="ageSelection">
-
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>29</option>
-                            <option>30</option>
-                            <option>31</option>
-                            <option>32</option>
-                            <option>33</option>
-                            <option>34</option>
-                            <option>35</option>
-                            <option>36</option>
-                            <option>37</option>
-                        </Input>
-
-                    </FormGroup>
-                </div>
-
 
             </div>
 
-        </Form>
-            </Col>
-            
-            </Row>
-            
-            </Container>
+            <div className="form-age">
+                <FormGroup className="form-been">
+
+
+                    <Input type="select" name="select">
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                        <option>32</option>
+                        <option>33</option>
+                        <option>34</option>
+                        <option>35</option>
+                        <option>36</option>
+                        <option>37</option>
+                    </Input>
+
+                </FormGroup >
+            </div>
+
+            <div className="form-age">
+                <FormGroup className="form-been">
+
+                    <Input type="select" name="select">
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                        <option>32</option>
+                        <option>33</option>
+                        <option>34</option>
+                        <option>35</option>
+                        <option>36</option>
+                        <option>37</option>
+                    </Input>
+
+                </FormGroup>
+            </div>
+            <div className="form-group">
+
+            <h3> <Link to="Members" className={window.location.pathname === "Members"}>
+            Search
+      </Link></h3>
+            </div>
+        </div>
         )
     }
 }

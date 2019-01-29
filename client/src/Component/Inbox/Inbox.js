@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './Inbox.css';
 import { Table } from 'reactstrap';
 import mainLogo from "../../Photos/clipart361312.png";
-import { NavLink, Nav, NavItem, Container, Row, Col,} from 'reactstrap';
+import { NavLink, Nav, NavItem,} from 'reactstrap';
 
 
 class Inbox extends Component {
@@ -28,27 +28,27 @@ class Inbox extends Component {
 
                     <li className="nav-item">
 
-                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                        <Link to="" className={window.location.pathname === "" ? "nav-link active" : "nav-link"}>
                             <span class="iconify" data-icon="emojione:red-heart" data-inline="false"></span>
                         </Link>
                     </li>
 
                     <li className="nav-item">
 
-                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                        <Link to="Members" className={window.location.pathname === "Members" ? "nav-link active" : "nav-link"}>
                             <span class="iconify" data-icon="whh:skypeonline" data-inline="false"></span>
                         </Link>
                     </li>
 
                     <li className="nav-item">
 
-                        <Link to="Inbox" className={window.location.pathname === "Inbox" ? "nav-link active" : "nav-link"}>
+                        <Link to="Registration" className={window.location.pathname === "Registration" ? "nav-link active" : "nav-link"}>
                             Edit Profile
                     </Link>
                     </li>
 
                     <li className="nav-item">
-                        <h3> <Link to="SignIn" className={window.location.pathname === "SignIn" ? "nav-link active" : "nav-link"}>
+                        <h3> <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
                             Log Out
   </Link></h3>
                     </li>
@@ -61,7 +61,27 @@ class Inbox extends Component {
             </NavItem>
         </Nav>
 
-                
+     
+              <Table bordered>
+                <thead>
+                  <tr>
+                    <th >Sender</th>
+                    <th>Conversation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">who u</th>
+                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </td>
+                  </tr>
+                  <tr>
+                  <th scope="row">who me</th>
+                  <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </td>
+                </tr>
+                  
+                </tbody>
+              </Table>
+     
 
             </div>
         )
