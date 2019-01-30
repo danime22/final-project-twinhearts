@@ -16,11 +16,6 @@ class RegistrationForm extends Component {
         let value = event.target.value;
         const name = event.target.name;
 
-        console.log("input: " + name + "=" + value);
-
-        // if (name === "password") {
-        //     value = value.substring(0, 15);
-        // }
         this.setState({
             [name]: value
         });

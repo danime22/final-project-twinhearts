@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Container, Card, CardBody, CardTitle, CardImg, CardSubtitle, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 
@@ -16,13 +17,14 @@ render() {
                             <Card className="member-card">
 
                                 <CardBody>
-                                    <CardTitle><p>Name: Harry</p></CardTitle>
+                                    <Link to="/profile/123456" className={window.location.pathname === "/profile/123456" ? "nav-link active" : "nav-link"}><CardTitle><p>Name: Harry</p></CardTitle></Link>
                                     <CardSubtitle>Age: 28</CardSubtitle>
                                     <CardImg src="http://via.placeholder.com/640x770" />
                                     <div className="button-div">
                                         <button><span class="iconify" data-icon="twemoji:envelope" data-inline="false"></span></button>
                                         <button><span class="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>
                                         <button><span class="iconify" data-icon="twemoji:winking-face" data-inline="false"></span></button>
+
                                     </div>
 
 
@@ -35,7 +37,7 @@ render() {
                             <Card className="member-card">
 
                                 <CardBody>
-                                    <CardTitle>Name: Coleman</CardTitle>
+                                <Link to="/profile/111111" className={window.location.pathname === "/profile/111111" ? "nav-link active" : "nav-link"}><CardTitle>Name: Coleman</CardTitle></Link>
                                     <CardSubtitle>Age: 27</CardSubtitle>
                                     <CardImg src="http://via.placeholder.com/640x770" />
                                     <div className="button-div">
