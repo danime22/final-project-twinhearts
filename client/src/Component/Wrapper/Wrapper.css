@@ -11,10 +11,40 @@
 
 }
 
+.input-div {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid#fff;
+    outline: none;
+    background: transparent;
+}
+
 h3 {
     font-size: 20px;
 }
 
-.sign-box {
-    border: 2px solid yellow;
+.form-div {
+    position: relative;
+
 }
+
+.sign-box {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   width: 500px;
+    border: 2px solid blue;
+    padding: 40px;
+    background-size: cover;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+    text-align: center;
+}
+

@@ -13,4 +13,8 @@ code {
     monospace;
 }
 
-
+body {
+  background-image: url("../src/Photos/background-image2.jpeg");
+  background-position: center;
+  background-attachment: fixed;
+}

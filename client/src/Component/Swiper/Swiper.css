@@ -1,0 +1,50 @@
+h3{
+    /* background-color: yellow; */
+    text-align: center;
+    font-family: 'Oleo Script', cursive;
+    font-weight: bold;
+}
+
+.swiper-container {
+    width: 100%;
+    padding-top: 70px;
+    padding-bottom: 10px;
+
+    /* border: 2px solid red; */
+  
+   
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+
+}
+
+.swiper-slide .imgBx{
+    width: 100%;
+}
+
+
+
+.swiper-slide .imgBx .image{
+    width: 100%;
+   
+   
+}
+
+
+.details {
+    /* box-sizing: border-box; */
+    font-size: 20px;
+    margin-top: -50px;
+    /* padding: 20px; */
+}
+  
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
