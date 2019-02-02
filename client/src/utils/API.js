@@ -1,5 +1,5 @@
 import axios from "axios";
-const APIKEY = "D7Y5N9EK5RKguIB4ZCmLrEaDAoMXBtjZKtrTHIdRtHkhnq80chEQP3gljW9ru0LW";
+
 
 export default {
 
@@ -8,6 +8,10 @@ export default {
         // return axios.post("/api/login");
 
         return axios.post("/api/users/login", user)
+    },
+
+    onlineUsers: (userId) => {
+        return axios.get("/api/users/onlineUsers/" + userId);
     },
 
 

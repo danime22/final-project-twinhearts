@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { login } from "../../utils/UserFunction";
-import Navbar from "../Navbar/Navbar";
+import logo from "../../Photos/clipart361312.png";
 import { Link } from "react-router-dom";
-// import Swiper from "../Swiper/Swiper";
+import Swiper from "../Swiper/Swiper";
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap';
 import "./Wrapper.css";
 import API from "../../utils/API";
@@ -10,15 +9,10 @@ import session from "../../utils/Session";
 
 
 
-
-
-
 const box = {
     height: "50vh",
     margin: "25vh auto 0"
 }
-
-
 
 
 class WrapPage extends Component {
@@ -31,7 +25,6 @@ class WrapPage extends Component {
         }
 
     }
-
 
 
 
@@ -56,6 +49,7 @@ class WrapPage extends Component {
                         this.props.history.push("/onlineMembers");
                     } else {
                         // TODO handle better
+                        
                         alert("not logged in");
                     }
 
@@ -69,9 +63,14 @@ class WrapPage extends Component {
     render() {
         return (
             <div>
-                <Navbar />
                 <Container style={box}>
+                    <Container className="container-logo">
+                        <div className="logo-name">
+                            <img src={logo} alt="logo"></img>
+                        </div>
 
+
+                    </Container>
                     <div className="sign-box">
                         <Form className="form-div" onSubmit={this.onSubmit}>
 
@@ -83,15 +82,18 @@ class WrapPage extends Component {
                                 <Input className="input-div" type="password" name="password" id="examplePassword" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
                             </FormGroup>
                             <Button color="secondary">Sign In</Button>
+                            <br /><br />
                         </Form>
-                        <h5>Not yet a member? </h5>
+                        <h5>Not yet a member? Free to Join!</h5>
                         <h5><Link to="/register" className={window.location.pathname === "/register"}>Register</Link></h5>
                     </div>
                 </Container>
 
+<div className="swiper-div">
 
-
-   {/* <Swiper /> */}
+<Swiper />
+</div>
+                
 
             </div>
         );
