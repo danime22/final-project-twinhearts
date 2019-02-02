@@ -3,7 +3,7 @@ import { Container } from "reactstrap";
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { FormGroup, Label, Input } from "reactstrap";
+import { FormGroup, Label, Input, Col, FormText } from "reactstrap";
 
 
 const containerStyle = {
@@ -33,10 +33,7 @@ const label = {
 }
 
 
-const h1Style = {
-    textAlign: "center",
 
-}
 
 
 class Registration extends React.Component {
@@ -92,7 +89,7 @@ class Registration extends React.Component {
         const { validated } = this.state;
         return (
             <div>
-              
+
                 <Container style={containerStyle}>
 
                     <Form
@@ -173,6 +170,9 @@ class Registration extends React.Component {
 
 
 
+
+
+
                         <Form>
                             <Form.Group controlId="validationCustom03">
                                 <Form.Label style={label}>City</Form.Label>
@@ -220,6 +220,16 @@ class Registration extends React.Component {
                                 Please choose your gender.
           </Form.Control.Feedback>
                         </Form.Group>
+                        <br></br>
+
+                        <FormGroup >
+                        <Label for="exampleFile" style={label}>Upload Photo</Label>
+                        <Col>
+                            <Input type="file" name="file" />
+
+                        </Col>
+                    </FormGroup>
+
 
                         <br></br>
 
@@ -230,6 +240,11 @@ class Registration extends React.Component {
                                 feedback="You must agree before submitting."
                             />
                         </Form.Group>
+
+
+                     
+
+
                         <br></br>
                         <Button style={button} on={this.handleSubmit} type="submit">Submit form</Button>
                     </Form>

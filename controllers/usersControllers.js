@@ -18,6 +18,16 @@ module.exports = {
       .catch(err => console.log(err));
   },
 
+  addFavorite: function(req, res) {
+    console.log(`adding fav: ${req.body.currentUserId}/${req.params.favUserId}`);
+    db.Users.update(
+      { _id: req.params.currentUserId },
+      { $push: { favorites: req.params.favUserId } }
+   ).then(dbModel => res.json(dbModel))
+   .catch(err => console.log(err));
+
+  },
+
 
   findAll: function (req, res) {
     db.Users

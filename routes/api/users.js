@@ -19,4 +19,8 @@ router.route("/onlineUsers/:currentUserId")
 .get(usersController.onlineUsers);
 
 
+router.route("/addFavorite/:currentUserId/:favUserId")
+.get(usersController.addFavorite);
+
+
 module.exports = router;

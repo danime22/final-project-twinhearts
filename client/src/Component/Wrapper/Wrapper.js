@@ -74,11 +74,11 @@ class WrapPage extends Component {
                     <div className="sign-box">
                         <Form className="form-div" onSubmit={this.onSubmit}>
 
-                            <FormGroup>
+                            <FormGroup className="group-form">
                                 <Input className="input-div" type="email" name="email" id="exampleEmail" placeholder="Enter Email" value={this.state.email} onChange={this.onChange} />
                             </FormGroup>
 
-                            <FormGroup>
+                            <FormGroup className="group-form">
                                 <Input className="input-div" type="password" name="password" id="examplePassword" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
                             </FormGroup>
                             <Button color="secondary">Sign In</Button>

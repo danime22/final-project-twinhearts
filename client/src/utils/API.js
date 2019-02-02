@@ -14,6 +14,10 @@ export default {
         return axios.get("/api/users/onlineUsers/" + userId);
     },
 
+    addFavorite: (userId, favId) => {
+        return axios.get("/api/users/addFavorite/" + userId + "/" + favId); 
+    },
+
 
     getUsers: () => {
         return axios.get("/api/users");
