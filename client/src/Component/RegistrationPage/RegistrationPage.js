@@ -16,7 +16,10 @@ class RegistrationPage extends Component {
                 email: "",
                 password: "",
                 gender: "",
-                zipCode: ""
+                city: "",
+                state: "",
+                birthday: "",
+                zip: ""
             },
             errorMessage: ""
         };
@@ -25,33 +28,52 @@ class RegistrationPage extends Component {
 
     handleRegister = data => {
         console.log("register" + JSON.stringify(data));
-        //TODO: Validate all fields.
 
+        var profile = {
+            headline: "",
+            description: "",
+            targetGender: [],
+            height: "",
+            bodyType: "",
+            religion: "",
+            drinking: "",
+            smoking: "",
+            eating: "",
+            pets: "",
+            hasChildren: null,
+            wantsChildren: null,
+            wouldTravel: null,
+            willingToRelocate: null,
+            seekingGender: [],
+            photos: []
+        }
+        data["profile"] = profile;
+        data["favorites"] = [];
+        data["lastActivity"] = null;
+        
         this.setState({ formState: data });
         this.setState({ errorMessage: "" });
 
-        console.log("state; " + JSON.stringify(this.state));
+        console.log("state; " + JSON.stringify(this.state.formData));
+        // if (data.name.length < 1) {
+        //     this.setState({ errorMessage: "Please fill out all fields." });
+        // } else if (data.password.length < 6) {
+        //     this.setState({ errorMessage: "Choose a more secure password'" });
+        // } else {
 
-        console.log("name=" + data.name);
-        if (data.name.length < 1) {
-            this.setState({ errorMessage: "Please fill out all fields." });
-        } else if (data.password.length < 6) {
-            this.setState({ errorMessage: "Choose a more secure password'" });
-        } else {
+        API.saveUser(data)
+            .then(res => {
+                console.log(JSON.stringify(res));
 
-            API.saveUser(data)
-                .then(res => {
-                    console.log(JSON.stringify(res));
+                // if successful, redirect to the Members online search.
+                this.props.history.push("/onlineMembers");
+            })
+            .catch(err => {
+                console.log(JSON.stringify(err));
 
-                    // if successful, redirect to the Members online search.
-                    this.props.history.push("/onlineMembers");
-                })
-                .catch(err => {
-                    console.log(JSON.stringify(err));
-
-                    this.setState({ errorMessage: "User already exists." });
-                });
-        }
+                // this.setState({ errorMessage: "User already exists." });
+            });
+        // }
     };
 
 

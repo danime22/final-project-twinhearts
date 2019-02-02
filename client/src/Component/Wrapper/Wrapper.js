@@ -1,52 +1,98 @@
 import React, { Component } from "react";
+import { login } from "../../utils/UserFunction";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
-import { Container, Form, FormGroup, Label, Input } from 'reactstrap';
+// import Swiper from "../Swiper/Swiper";
+import { Container, Form, FormGroup, Button, Input } from 'reactstrap';
 import "./Wrapper.css";
+import API from "../../utils/API";
+import session from "../../utils/Session";
 
 
-const contain = {
+
+
+
+
+const box = {
     height: "50vh",
     margin: "25vh auto 0"
 }
 
 
+
+
 class WrapPage extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            username: "",
+            email: "",
             password: ""
-        };
+        }
+
+    }
+
+
+
+
+    onChange = (event) => {
+
+        let value = event.target.value;
+        const name = event.target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    onSubmit = (event) => {
+        event.preventDefault();
+
+        API.userLogin(this.state)
+            .then(res => {
+                if (res) {
+                    if (res.data != null) {
+                        session.save("user", res.data);
+                        this.props.history.push("/onlineMembers");
+                    } else {
+                        // TODO handle better
+                        alert("not logged in");
+                    }
+
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+
     }
 
     render() {
         return (
             <div>
                 <Navbar />
-                <Container style={contain}>
+                <Container style={box}>
 
                     <div className="sign-box">
-                        <Form>
+                        <Form className="form-div" onSubmit={this.onSubmit}>
 
                             <FormGroup>
-                                <Label for="exampleEmail">Email</Label>
-                                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                                <Input className="input-div" type="email" name="email" id="exampleEmail" placeholder="Enter Email" value={this.state.email} onChange={this.onChange} />
                             </FormGroup>
 
                             <FormGroup>
-                                <Label for="examplePassword">Password</Label>
-                                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                                <Input className="input-div" type="password" name="password" id="examplePassword" placeholder="Enter Password" value={this.state.password} onChange={this.onChange} />
                             </FormGroup>
-                            <h3> <Link to="Members" className={window.location.pathname === "Members"}>
-                                Sign In
-                    </Link></h3>
+                            <Button color="secondary">Sign In</Button>
                         </Form>
                         <h5>Not yet a member? </h5>
-                        <Link to="RegistrationPage" className={window.location.pathname === "RegistrationPage"}>Register</Link>
+                        <h5><Link to="/register" className={window.location.pathname === "/register"}>Register</Link></h5>
                     </div>
                 </Container>
+
+
+
+   {/* <Swiper /> */}
+
             </div>
         );
     }

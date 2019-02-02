@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { FormGroup, Input, } from 'reactstrap';
 import Navbar from "../Navbar/Navbar";
 import SearchForm from "../SearchForm/SearchForm";
 import MembersList from "../MembersList/MembersList";

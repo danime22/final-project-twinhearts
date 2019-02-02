@@ -2,6 +2,16 @@ const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
+
+  login: function (req, res) {
+    console.log("Loggining in " + JSON.stringify(req.body));
+    db.Users
+      .findOne(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+
   findAll: function (req, res) {
     db.Users
       .find(res.query)

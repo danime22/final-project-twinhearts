@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "../Navbar/Navbar";
 import MembersList from "../MembersList/MembersList";
 import "./MembersOnlinePage.css";
+import API from "../../utils/API";
 
 
 
@@ -15,6 +16,21 @@ class MembersOnlinePage extends Component {
 
         this.state = {};
         
+    }
+
+    componentDidMount() {
+        API.getUsers().then(res => {
+            console.log(JSON.stringify(res));
+
+            // if successful, redirect to the Members online search.
+            
+        })
+        .catch(err => {
+            console.log(JSON.stringify(err));
+
+            // this.setState({ errorMessage: "User already exists." });
+        });
+
     }
 
 
