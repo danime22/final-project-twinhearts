@@ -11,6 +11,22 @@
 
 }
 
+.container-logo {
+   margin-top: -250px;
+   padding: 0.5em;
+   display: flex;
+   justify-content: center;
+}
+
+.logo-name {
+
+margin: 0.5em;
+}
+
+
+.swiper-div {
+    margin-top: 200px;
+}
 .input-div {
     width: 100%;
     padding: 10px 0;
@@ -35,15 +51,14 @@ h3 {
 
 .sign-box {
     position: absolute;
-    top: 35%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
    width: 500px;
-    border: 2px solid blue;
     padding: 40px;
     background-size: cover;
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    box-shadow: 0  15px 25px rgba(0,0,0,5);
     border-radius: 10px;
     text-align: center;
 }

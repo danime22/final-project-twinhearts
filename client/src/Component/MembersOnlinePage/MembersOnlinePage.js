@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import Navbar from "../Navbar/Navbar";
 import MembersList from "../MembersList/MembersList";
-import "./MembersOnlinePage.css";
 import API from "../../utils/API";
+import session from "../../utils/Session";
+
+
+
+
 
 
 
@@ -14,13 +18,16 @@ class MembersOnlinePage extends Component {
         //TODO: Call the API to get the online members
         // Set the state to the result.
 
-        this.state = {};
+        this.state = {members: []};
         
     }
 
     componentDidMount() {
-        API.getUsers().then(res => {
+        let user = session.get("user");
+        API.onlineUsers(user._id).then(res => {
             console.log(JSON.stringify(res));
+
+            this.setState({members: res.data});
 
             // if successful, redirect to the Members online search.
             
@@ -34,11 +41,13 @@ class MembersOnlinePage extends Component {
     }
 
 
+
+
     render() {
         return (
             <div>
                 <Navbar />
-                <MembersList list={this.state}/>
+                <MembersList list={this.state.members}/>
             </div>
         )
     }

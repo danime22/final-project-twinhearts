@@ -1,7 +1,7 @@
 import React from 'react';
 import mainLogo from "../../Photos/clipart361312.png";
 import { Link } from "react-router-dom";
-import { Nav, NavItem, NavLink, FormGroup, Label, Input } from 'reactstrap';
+import { Nav, NavItem, NavLink} from 'reactstrap';
 import "./Navbar.css";
 
 
@@ -36,7 +36,7 @@ function Navbar() {
 
                         <li className="nav-item">
 
-                            <Link to="Search" className={window.location.pathname === "Search" ? "nav-link active" : "nav-link"}>
+                            <Link to="/search" className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}>
                                 <span className="iconify" data-icon="mdi:account-search" data-inline="false"></span>
                             </Link>
                         </li>

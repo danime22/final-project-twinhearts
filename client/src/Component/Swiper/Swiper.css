@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
 h3{
     /* background-color: yellow; */
     text-align: center;
-    font-family: 'Oleo Script', cursive;
+    font-family: 'Merriweather', serif;
     font-weight: bold;
 }
 
@@ -44,7 +46,7 @@ h3{
   
 
 img {
-    height: 300px;
+    height: 250px;
     width: 300px;
 }
 
