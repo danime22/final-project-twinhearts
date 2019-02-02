@@ -39,7 +39,7 @@ const h1Style = {
 }
 
 
-class Registration extends React.Component {
+class RegistrationForm extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
@@ -66,26 +66,20 @@ class Registration extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const form = event.currentTarget;
+        // const form = event.currentTarget;
+        // console.log(form);
 
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        // if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        //     this.setState({ validated: false })
+        // } else {
+        //     this.setState({ validated: true });
+        //     this.props.onRegister(this.state);
+        // }
 
-        this.setState({ validated: true });
-
+        //TODO: Validation logic from state values
         this.props.onRegister(this.state);
-
-        // API.saveUser(data)
-        // .then(res => {
-        //     console.log(JSON.stringify(res));
-        //     this.props.history.push('/onlineMembers');
-        // })
-        // .catch(err => {
-        //     console.log(JSON.stringify(err));
-        //     this.setState({ errorMessage: "User already exists." });
-        // })
     }
 
     render() {
@@ -242,4 +236,4 @@ class Registration extends React.Component {
 
 
 
-export default Registration;
+export default RegistrationForm;

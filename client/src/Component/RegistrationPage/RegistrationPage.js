@@ -66,7 +66,7 @@ class RegistrationPage extends Component {
                 console.log(JSON.stringify(res));
 
                 // if successful, redirect to the Members online search.
-                this.props.history.push("/onlineMembers");
+                this.props.history.push("/");
             })
             .catch(err => {
                 console.log(JSON.stringify(err));
