@@ -1,4 +1,6 @@
 const db = require("../models");
+const axios = require("axios");
+const APIKEY = "2HU64PyyHRymqDKkKwNvWuFTg6GAn7AndKViBIWr7TXJyjvlj6IeLMj03t7RdyZr"
 
 // Defining methods for the booksController
 module.exports = {
@@ -52,5 +54,24 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  search: function (req, res) {
+    console.log(req.query.zipcode, req.query.distance);
+    //return res.json({msg: "okay"});  
+      const url = `https://www.zipcodeapi.com/rest/${APIKEY}/radius.json/${req.query.zipcode}/${req.query.distance}/miles`
+      axios.get(url).then(response => {
+        const zips = response.data.zip_codes
+        const zipcodes = zips.map(zip =>zip.zip_code)
+        //query mongoose db
+        db.Users.find({zip: {$in: zipcodes} }).then(dbres => {
+          return res.status(200).json(dbres);
+        }).catch(err =>{ 
+          console.log(err)
+          return res.status(418).json(err);
+        });
+      }).catch(err =>{ 
+        console.log(err)
+        return res.status(400).json(err);
+      });
+    }
 };
