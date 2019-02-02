@@ -18,5 +18,8 @@ router.route("/login")
 router.route("/onlineUsers/:currentUserId")
 .get(usersController.onlineUsers);
 
+router.route("/search")
+.get(usersController.search);
+
 
 module.exports = router;
