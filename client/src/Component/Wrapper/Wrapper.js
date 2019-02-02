@@ -44,7 +44,7 @@ class WrapPage extends Component {
                     </Link></h3>
                         </Form>
                         <h5>Not yet a member? </h5>
-                        <Link to="RegistrationPage" className={window.location.pathname === "RegistrationPage"}>Register</Link>
+                        <Link to="/register" className={window.location.pathname === "register"}>Register</Link>
                     </div>
                 </Container>
             </div>

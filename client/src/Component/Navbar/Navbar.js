@@ -5,6 +5,7 @@ import { Nav, NavItem, NavLink, FormGroup, Label, Input } from 'reactstrap';
 import "./Navbar.css";
 
 
+
 const iconOnline = {
     color: "blue"
 }
@@ -49,7 +50,7 @@ function Navbar() {
 
                         <li className="nav-item">
 
-                            <Link to="Members" className={window.location.pathname === "Members" ? "nav-link active" : "nav-link"}>
+                            <Link to="onlineMembers" className={window.location.pathname === "onlineMembers" ? "nav-link active" : "nav-link"}>
                                 <span style={iconOnline} class="iconify" data-icon="whh:skypeonline" data-inline="false"></span>
                             </Link>
                         </li>

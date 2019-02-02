@@ -63,6 +63,8 @@ class RegistrationForm extends Component {
                                     <Label for="exampleZipCode">Zip Code</Label>
                                     <Input type="text" value={this.state.zipCode} onChange={this.handleInputChange} name="zipCode" id="exampleZipCode" placeholder="with a placeholder" />
                                 </FormGroup>
+                               
+
                                 <button onClick={this.handleFormSubmit}>Submit</button>
                             </Form>
                         </Col>
