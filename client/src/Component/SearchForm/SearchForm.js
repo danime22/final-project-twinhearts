@@ -16,9 +16,18 @@ class SearchForm extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if(this.state.zipcode && this.state.distance) {
-            Axios.search(this.state.zip, this.state.distance).then(response => {})
-        }
+        // if(this.state.zip && this.state.distance) {
+        //     Axios.search(this.state.zip, this.state.distance).then(response => {})
+        // }
+
+        // for (var property in object) {
+        //     if (object.hasOwnProperty(property)) {
+        //         // do stuff
+        //     }
+        // }
+    }
+    handleInputChange = e => {
+        this.setState({ [e.target.name]: e.target.value});
     }
 
 componentDidUpdate(){
