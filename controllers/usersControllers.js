@@ -1,6 +1,6 @@
 const db = require("../models");
 const axios = require("axios");
-const APIKEY = "2HU64PyyHRymqDKkKwNvWuFTg6GAn7AndKViBIWr7TXJyjvlj6IeLMj03t7RdyZr"
+//const APIKEY = "2HU64PyyHRymqDKkKwNvWuFTg6GAn7AndKViBIWr7TXJyjvlj6IeLMj03t7RdyZr"
 
 // Defining methods for the booksController
 module.exports = {
@@ -58,7 +58,7 @@ module.exports = {
   search: function (req, res) {
     console.log(req.query.zipcode, req.query.distance);
     //return res.json({msg: "okay"});  
-      const url = `https://www.zipcodeapi.com/rest/${APIKEY}/radius.json/${req.query.zipcode}/${req.query.distance}/miles`
+      const url = `https://www.zipcodeapi.com/rest/${process.env.APIKEY}/radius.json/${req.query.zipcode}/${req.query.distance}/miles`
       axios.get(url).then(response => {
         const zips = response.data.zip_codes
         const zipcodes = zips.map(zip =>zip.zip_code)
