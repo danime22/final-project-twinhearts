@@ -89,6 +89,7 @@ componentDidUpdate(){
                 <div className="form-age">
                     Min-Age:<FormGroup className="form-been">
                         <Input type="select" name="minAge" onChange={this.handleInputChange} value={this.state.minAge}>
+                            <option>  </option>
                             <option>18</option>
                             <option>19</option>
                             <option>20</option>
@@ -116,6 +117,7 @@ componentDidUpdate(){
                 <div className="form-age">
                     Max-Age:<FormGroup className="form-been">
                         <Input type="select" name="maxAge" onChange={this.handleInputChange} value={this.state.maxAge}>
+                            <option>  </option>
                             <option>18</option>
                             <option>19</option>
                             <option>20</option>
@@ -144,6 +146,7 @@ componentDidUpdate(){
                     Height: <FormGroup >
                         <Input type="select" name="height" onChange={this.handleInputChange} value={this.state.height}>
                             <option>    </option>
+                            <option>any</option>
                             <option>3'0 to 4'0</option>
                             <option>4'0 to 5'0</option>
                             <option>5'0 to 6'0</option>
@@ -158,6 +161,7 @@ componentDidUpdate(){
                             <option>  </option>
                             <option>yes</option>
                             <option>no</option>
+                            <option>no preference</option>
                             <option>no preference</option>
                         </Input>
                     </FormGroup >
