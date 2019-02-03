@@ -7,15 +7,22 @@ export default {
         // console.log("loged in");
         // return axios.post("/api/login");
 
-        return axios.post("/api/users/login", user)
+        return axios.post("/api/users/login", user);
     },
+
+
 
     onlineUsers: (userId) => {
         return axios.get("/api/users/onlineUsers/" + userId);
     },
 
     addFavorite: (userId, favId) => {
-        return axios.get("/api/users/addFavorite/" + userId + "/" + favId); 
+        return axios.post("/api/users/addFavorite", {userId: userId, favUserId: favId}); 
+    },
+
+
+    removeFavorite: (userId, favId) => {
+        return axios.post("/api/users/removeFavorite", {userId: userId, favUserId: favId}); 
     },
 
 

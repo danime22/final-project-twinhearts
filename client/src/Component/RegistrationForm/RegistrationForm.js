@@ -152,7 +152,7 @@ class Registration extends React.Component {
 
 
 
-                        <FormGroup>
+                       {/* <FormGroup>
                             <Label style={label} for="exampleDate">Date</Label>
                             <Input
                                 type="date"
@@ -165,7 +165,7 @@ class Registration extends React.Component {
                             <FormControl.Feedback type="invalid" style={invalid}>
                                 Please put valid birthday
                 </FormControl.Feedback>
-                        </FormGroup>
+                       </FormGroup>*/}
 
 
 

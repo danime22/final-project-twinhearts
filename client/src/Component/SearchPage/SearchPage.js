@@ -11,7 +11,7 @@ class Search extends Component {
 
         this.state = {
             search: {},
-            searchResults: {}
+            searchResults: []
         }; //should be init search and members
 
     }
