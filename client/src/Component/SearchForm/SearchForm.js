@@ -6,12 +6,14 @@ import Axios from "axios";
 class SearchForm extends Component {
 
     state = {
-        zip: "",
+        gender: "",
         distance: "",
-        city: "",
-        state: "",
-        matches: "",
-        gender: ""
+        zip: "",
+        minAge: "",
+        maxAge: "",
+        height: "",
+        smoke: "",
+        drink: ""
     }
 
     handleFormSubmit = event => {
@@ -51,9 +53,7 @@ componentDidUpdate(){
                             <option>    </option>
                             <option>Male</option>
                             <option>Female</option>
-
                         </Input>
-
                     </FormGroup>
                 </div>
 
@@ -74,27 +74,21 @@ componentDidUpdate(){
                             <option>90 miles</option>
                             <option>100 miles</option>
                         </Input>
-
-                    </FormGroup>
+                     </FormGroup>
                 </div>
 
 
                 <div className="form-group">
-
-                    <FormGroup>
-                        <Label for="exampleZip">Zip</Label>
-                        <Input type="text" name="zip" id="exampleZip" />
+                   <FormGroup>
+                        <Label for="exampleZip">Zip:</Label>
+                        <Input type="text" name="zip" id="exampleZip" onChange={this.handleInputChange} value={this.state.zip}>
+                        </Input>
                     </FormGroup>
-
-
-
                 </div>
 
                 <div className="form-age">
-                    <FormGroup className="form-been">
-
-
-                        <Input type="select" name="select">
+                    Min-Age:<FormGroup className="form-been">
+                        <Input type="select" name="minAge" onChange={this.handleInputChange} value={this.state.minAge}>
                             <option>18</option>
                             <option>19</option>
                             <option>20</option>
@@ -116,14 +110,12 @@ componentDidUpdate(){
                             <option>36</option>
                             <option>37</option>
                         </Input>
-
                     </FormGroup >
                 </div>
 
                 <div className="form-age">
-                    <FormGroup className="form-been">
-
-                        <Input type="select" name="select">
+                    Max-Age:<FormGroup className="form-been">
+                        <Input type="select" name="maxAge" onChange={this.handleInputChange} value={this.state.maxAge}>
                             <option>18</option>
                             <option>19</option>
                             <option>20</option>
@@ -145,9 +137,44 @@ componentDidUpdate(){
                             <option>36</option>
                             <option>37</option>
                         </Input>
-
                     </FormGroup>
                 </div>
+
+                <div className="form-group">
+                    Height: <FormGroup >
+                        <Input type="select" name="height" onChange={this.handleInputChange} value={this.state.height}>
+                            <option>    </option>
+                            <option>3'0 to 4'0</option>
+                            <option>4'0 to 5'0</option>
+                            <option>5'0 to 6'0</option>
+                            <option>6'0 and up</option>
+                        </Input>
+                    </FormGroup>
+                </div>
+
+                <div className="form-age">
+                    Smoke:<FormGroup className="form-been">
+                        <Input type="select" name="smoke" onChange={this.handleInputChange} value={this.state.smoke}>
+                            <option>  </option>
+                            <option>yes</option>
+                            <option>no</option>
+                            <option>no preference</option>
+                        </Input>
+                    </FormGroup >
+                </div>
+
+                <div className="form-age">
+                    Drink:<FormGroup className="form-been">
+                        <Input type="select" name="drink" onChange={this.handleInputChange} value={this.state.drink}>
+                            <option>  </option>
+                            <option>yes</option>
+                            <option>no</option>
+                            <option>no preference</option>
+                        </Input>
+                    </FormGroup >
+                </div>
+                
+
                 <div className="form-group">
                     <h3> 
                         <Button onClick={this.handleFormSubmit} >
