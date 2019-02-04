@@ -25,6 +25,10 @@ export default {
         return axios.post("/api/users/removeFavorite", {userId: userId, favUserId: favId}); 
     },
 
+    favoriteUsers: (userId) => {
+return axios.get("/api/users/favorites/" + userId)
+    },
+
 
     getUsers: () => {
         return axios.get("/api/users");
@@ -43,5 +47,17 @@ export default {
 
     deleteUser: id => {
         return axios.delete("api/users", + id);
+    },
+
+    createMessage: (data) => {
+        return axios.post("/api/messages/", data);
+    },
+
+    getMessages: (userId) => {
+        return axios.get("/api/messages/" + userId);
+    },
+
+    addMessage: (data) => {
+        return axios.post("/api/messages/addMessage", data);
     }
 }
