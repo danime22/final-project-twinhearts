@@ -32,7 +32,9 @@ const DataSchema = new Schema(
             photos: [String]
         }
 
-    }
+    },
+
+  
 )
 module.exports = mongoose.model("Users", DataSchema);
 

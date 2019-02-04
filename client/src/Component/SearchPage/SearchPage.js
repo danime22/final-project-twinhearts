@@ -21,7 +21,7 @@ class Search extends Component {
             <div>
                 <Navbar />
                 <SearchForm initSearch={this.state.search} />
-                <MembersList list={this.state.searchResults} />            
+                <MembersList list={[]} />            
             </div>
         )
     }

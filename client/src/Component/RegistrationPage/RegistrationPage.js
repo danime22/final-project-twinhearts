@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import "./RegistrationPage.css";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import session from "../../utils/Session";
 
 
 class RegistrationPage extends Component {
@@ -64,9 +65,8 @@ class RegistrationPage extends Component {
         API.saveUser(data)
             .then(res => {
                 console.log(JSON.stringify(res));
-
-                // if successful, redirect to the Members online search.
-                this.props.history.push("/");
+                session.save("user", res.data);
+                this.props.history.push("/onlineMembers");
             })
             .catch(err => {
                 console.log(JSON.stringify(err));

@@ -1,6 +1,7 @@
 const db = require("../models");
 const axios = require("axios");
 //const APIKEY = "2HU64PyyHRymqDKkKwNvWuFTg6GAn7AndKViBIWr7TXJyjvlj6IeLMj03t7RdyZr"
+const mongoose = require("mongoose");
 
 // Defining methods for the booksController
 module.exports = {
@@ -13,10 +14,41 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  onlineUsers: function(req, res) {
+  onlineUsers: function (req, res) {
     console.log("getting all users but: " + req.params.currentUserId);
-    db.Users.find({"_id": {$ne: req.params.currentUserId}})
+    db.Users.find({ "_id": { $ne: req.params.currentUserId } })
       .then(dbModel => res.json(dbModel))
+      .catch(err => console.log(err));
+  },
+
+  addFavorite: function (req, res) {
+    console.log(`adding fav: ${req.body.userId}/${req.body.favUserId}`);
+    db.Users.updateOne(
+      { _id: mongoose.Types.ObjectId(req.body.userId) },
+      { $push: { favorites: mongoose.Types.ObjectId(req.body.favUserId) } }
+    ).then(dbModel => res.json(dbModel))
+      .catch(err => console.log(err));
+
+  },
+
+  removeFavorite: function (req, res) {
+    console.log(`removing fav: ${req.body.userId}/${req.body.favUserId}`);
+    db.Users.updateOne(
+      { _id: mongoose.Types.ObjectId(req.body.userId) },
+      { $pull: { favorites: req.body.favUserId } }
+    ).then(dbModel => res.json(dbModel))
+      .catch(err => console.log(err));
+
+  },
+
+
+  getFavorites: function (req, res) {
+    db.Users.findOne({ _id: mongoose.Types.ObjectId(req.params.id) })
+      .then((dbUser) => {
+        db.Users.find({ _id: { $in: dbUser.favorites } })
+          .then(dbFavs => res.json(dbFavs))
+          .catch(err => console.log(err))
+      })
       .catch(err => console.log(err));
   },
 

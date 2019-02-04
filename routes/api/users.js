@@ -24,4 +24,17 @@ router.route("/")
 .post(usersController.create);
 
 
+router.route("/addFavorite")
+.post(usersController.addFavorite);
+
+router.route("/removeFavorite")
+.post(usersController.removeFavorite);
+
+
+router.route("/favorites/:id")
+.get(usersController.getFavorites);
+
+
+
+
 module.exports = router;
