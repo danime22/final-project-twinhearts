@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import MembersList from "../MembersList/MembersList";
+import API from "../../utils/API";
 
 class SearchForm extends Component {
 
@@ -13,7 +15,8 @@ class SearchForm extends Component {
         maxAge: "",
         height: "",
         smoke: "",
-        drink: ""
+        drink: "",
+        results: []
     }
 
     handleFormSubmit = event => {
@@ -22,11 +25,21 @@ class SearchForm extends Component {
         //     Axios.search(this.state.zip, this.state.distance).then(response => {})
         // }
 
-        // for (var property in object) {
-        //     if (object.hasOwnProperty(property)) {
-        //         // do stuff
-        //     }
-        // }
+        //TODO: Validate state fields before passing
+
+        let searchParams = {};
+        for (var property in this.state) {
+            if (this.state.hasOwnProperty(property)) {
+                if(property === "results") continue;
+                searchParams[property] = this.state[property];
+            }
+        }
+        //console.log(searchParams);
+        API.search(searchParams).then(response => {
+            this.setState({ results: response.data});
+        }).catch(err => {
+            console.log(err);
+        })
     }
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
@@ -60,18 +73,18 @@ class SearchForm extends Component {
                         Miles: <FormGroup >
                             <Input type="select" name="distance" onChange={this.handleInputChange} value={this.state.distance} >
                                 <option>       </option>
-                                <option>5 miles</option>
-                                <option>10 miles</option>
-                                <option>15 miles</option>
-                                <option>20 miles</option>
-                                <option>30 miles</option>
-                                <option>40 miles</option>
-                                <option>50 miles</option>
-                                <option>60 miles</option>
-                                <option>70 miles</option>
-                                <option>80 miles</option>
-                                <option>90 miles</option>
-                                <option>100 miles</option>
+                                <option>5</option>
+                                <option>10</option>
+                                <option>15</option>
+                                <option>20</option>
+                                <option>30</option>
+                                <option>40</option>
+                                <option>50</option>
+                                <option>60</option>
+                                <option>70</option>
+                                <option>80</option>
+                                <option>90</option>
+                                <option>100</option>
                             </Input>
                         </FormGroup>
                     </div>
@@ -186,6 +199,7 @@ class SearchForm extends Component {
                         </h3>
                     </div>
                 </div>
+                <MembersList list={this.state.results} />
             </div>
         )
         }

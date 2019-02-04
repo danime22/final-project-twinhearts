@@ -88,22 +88,35 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   search: function (req, res) {
-    console.log(req.query.zipcode, req.query.distance);
-    //return res.json({msg: "okay"});  
-      const url = `https://www.zipcodeapi.com/rest/${process.env.APIKEY}/radius.json/${req.query.zipcode}/${req.query.distance}/miles`
-      axios.get(url).then(response => {
-        const zips = response.data.zip_codes
-        const zipcodes = zips.map(zip =>zip.zip_code)
-        //query mongoose db
-        db.Users.find({zip: {$in: zipcodes} }).then(dbres => {
-          return res.status(200).json(dbres);
-        }).catch(err =>{ 
-          console.log(err)
-          return res.status(418).json(err);
-        });
+    // console.log(req.query);
+    // return res.json({msg: "okay"});
+    if(req.query.distance === "" || req.query.zip === "") {
+      return res.status(400).json({ msg: "You must supply a zip and distance"});
+    }
+    
+    const url = `https://www.zipcodeapi.com/rest/${process.env.APIKEY}/radius.json/${req.query.zip}/${req.query.distance}/miles`
+    axios.get(url).then(response => {
+      const zips = response.data.zip_codes
+      const zipcodes = zips.map(zip =>zip.zip_code)
+
+      const query = {};
+      for (var property in req.query) {
+        if (req.query.hasOwnProperty(property)) {
+          if(property === "zip" || property === "distance") continue;   
+          query[property] = req.query[property];
+        }
+      }
+      //query mongoose db
+      //console.log({...query, zip: { $in: zipcodes }});
+      db.Users.find({...query, zip: { $in: zipcodes }}).then(dbres => {
+        return res.status(200).json(dbres);
       }).catch(err =>{ 
         console.log(err)
-        return res.status(400).json(err);
+        return res.status(418).json(err);
       });
-    }
+    }).catch(err =>{ 
+      console.log(err)
+      return res.status(400).json(err);
+    });
+   }
 };
