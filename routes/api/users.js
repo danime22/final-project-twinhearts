@@ -19,4 +19,11 @@ router.route("/onlineUsers/:currentUserId")
 .get(usersController.onlineUsers);
 
 
+router.route("/addFavorite")
+.post(usersController.addFavorite);
+
+router.route("/removeFavorite")
+.post(usersController.removeFavorite);
+
+
 module.exports = router;

@@ -1,4 +1,5 @@
 const db = require("../models");
+const mongoose = require("mongoose");
 
 // Defining methods for the booksController
 module.exports = {
@@ -16,6 +17,26 @@ module.exports = {
     db.Users.find({"_id": {$ne: req.params.currentUserId}})
       .then(dbModel => res.json(dbModel))
       .catch(err => console.log(err));
+  },
+
+  addFavorite: function(req, res) {
+    console.log(`adding fav: ${req.body.userId}/${req.body.favUserId}`);
+    db.Users.updateOne(
+      { _id: mongoose.Types.ObjectId(req.body.userId )},
+      { $push: { favorites: req.body.favUserId } }
+   ).then(dbModel => res.json(dbModel))
+   .catch(err => console.log(err));
+
+  },
+
+  removeFavorite: function(req, res) {
+    console.log(`removing fav: ${req.body.userId}/${req.body.favUserId}`);
+    db.Users.updateOne(
+      { _id: mongoose.Types.ObjectId(req.body.userId )},
+      { $pull: { favorites: req.body.favUserId } }
+   ).then(dbModel => res.json(dbModel))
+   .catch(err => console.log(err));
+
   },
 
 

@@ -11,7 +11,7 @@ class Search extends Component {
 
         this.state = {
             search: {},
-            searchResults: {}
+            searchResults: []
         }; //should be init search and members
 
     }
@@ -21,7 +21,7 @@ class Search extends Component {
             <div>
                 <Navbar />
                 <SearchForm initSearch={this.state.search} />
-                <MembersList list={this.state.searchResults} />            
+                <MembersList list={[]} />            
             </div>
         )
     }
