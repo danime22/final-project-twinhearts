@@ -4,7 +4,6 @@ import MembersList from "../MembersList/MembersList";
 import API from "../../utils/API";
 import session from "../../utils/Session";
 
-
 class MembersOnlinePage extends Component {
     constructor(props) {
         super(props);
@@ -13,12 +12,14 @@ class MembersOnlinePage extends Component {
         // Set the state to the result.
 
         this.state = {members: []};
-        
+        //DEBUGGING-----
+        session.save("_id", "5c55e22ee5fc4c07fd47954a");
+        //--------------
     }
 
     componentDidMount() {
-        let user = session.get("user");
-        API.onlineUsers(user._id).then(res => {
+        let user = session.get("_id");
+        API.onlineUsers(user).then(res => {
             console.log(JSON.stringify(res));
 
             this.setState({members: res.data});
