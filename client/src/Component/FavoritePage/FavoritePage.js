@@ -4,25 +4,22 @@ import MembersList from "../MembersList/MembersList";
 import API from "../../utils/API";
 import session from "../../utils/Session";
 
-class MembersOnlinePage extends Component {
-    constructor(props) {
+
+
+class FavoritePage extends Component {
+
+    constructor(props){
         super(props);
 
-        //TODO: Call the API to get the online members
-        // Set the state to the result.
-
-        this.state = {members: []};
-        //DEBUGGING-----
-        session.save("_id", "5c55e22ee5fc4c07fd47954a");
-        //--------------
+        this.state = {favorites: []};
     }
 
     componentDidMount() {
-        let user = session.get("_id");
-        API.onlineUsers(user).then(res => {
+        let user = session.get("user");
+        API.favoriteUsers(user._id).then(res => {
             console.log(JSON.stringify(res));
 
-            this.setState({members: res.data});
+            this.setState({favorites: res.data});
 
             // if successful, redirect to the Members online search.
             
@@ -36,18 +33,19 @@ class MembersOnlinePage extends Component {
     }
 
 
-
-
-    render() {
-        return (
-            <div>
-                <Navbar />
-                <MembersList list={this.state.members}/>
-            </div>
-        )
-    }
     
 
+    
+    render() {
+        return (
+
+            <div>
+            <Navbar />
+            <MembersList list={this.state.favorites}/>
+            </div>
+        );
+    };
 }
 
-export default MembersOnlinePage;
+
+export default FavoritePage;

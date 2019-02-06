@@ -44,6 +44,10 @@ h3 {
     font-size: 20px;
 }
 
+.group-form  {
+    width: 100% !important;
+}
+
 .form-div {
     position: relative;
 
@@ -51,10 +55,10 @@ h3 {
 
 .sign-box {
     position: absolute;
-    top: 55%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-   width: 500px;
+   width: 400px;
     padding: 40px;
     background-size: cover;
     box-sizing: border-box;

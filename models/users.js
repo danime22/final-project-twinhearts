@@ -5,12 +5,25 @@ const DataSchema = new Schema(
     {
         name: String,
         birthday: Date,
-        gender: String,
-        email: String,
-        password: String,
+        gender: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        password: {
+            type: String,
+            required: true
+        },
         city: String,
         state: String,
-        zip: Number,
+        zip: {
+            type: Number,
+            required: true
+        },
         favorites: [String],
         lastActivity: Date,
         profile: {
@@ -32,7 +45,9 @@ const DataSchema = new Schema(
             photos: [String]
         }
 
-    }
+    },
+
+  
 )
 module.exports = mongoose.model("Users", DataSchema);
 

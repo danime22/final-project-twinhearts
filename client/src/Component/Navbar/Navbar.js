@@ -44,7 +44,7 @@ function Navbar() {
 
                         <li className="nav-item">
 
-                            <Link to="/messages" className={window.location.pathname === "/messages" ? "nav-link active" : "nav-link"}>
+                            <Link to="/favorites" className={window.location.pathname === "/favorites" ? "nav-link active" : "nav-link"}>
                                 <span className="iconify" data-icon="emojione:red-heart" data-inline="false"></span>
                             </Link>
                         </li>

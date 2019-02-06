@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../Navbar/Navbar";
 import SearchForm from "../SearchForm/SearchForm";
-import MembersList from "../MembersList/MembersList";
+//import MembersList from "../MembersList/MembersList";
 
 class Search extends Component {
 
@@ -11,7 +11,7 @@ class Search extends Component {
 
         this.state = {
             search: {},
-            searchResults: {}
+            searchResults: []
         }; //should be init search and members
 
     }
@@ -21,7 +21,7 @@ class Search extends Component {
             <div>
                 <Navbar />
                 <SearchForm initSearch={this.state.search} />
-                <MembersList list={this.state.searchResults} />            
+                         
             </div>
         )
     }

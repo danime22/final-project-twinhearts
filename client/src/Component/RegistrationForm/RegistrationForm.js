@@ -2,8 +2,8 @@ import React from "react";
 import { Container } from "reactstrap";
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
-import {Button} from 'react-bootstrap/Button';
-import { FormGroup, Label, Input } from "reactstrap";
+import Button from 'react-bootstrap/Button';
+import { FormGroup, Label, Input, Col, FormText } from "reactstrap";
 
 
 const containerStyle = {
@@ -33,13 +33,10 @@ const label = {
 }
 
 
-const h1Style = {
-    textAlign: "center",
-
-}
 
 
-class Registration extends React.Component {
+
+class RegistrationForm extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
@@ -66,33 +63,27 @@ class Registration extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const form = event.currentTarget;
+        // const form = event.currentTarget;
+        // console.log(form);
 
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        // if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        //     this.setState({ validated: false })
+        // } else {
+        //     this.setState({ validated: true });
+        //     this.props.onRegister(this.state);
+        // }
 
-        this.setState({ validated: true });
-
+        //TODO: Validation logic from state values
         this.props.onRegister(this.state);
-
-        // API.saveUser(data)
-        // .then(res => {
-        //     console.log(JSON.stringify(res));
-        //     this.props.history.push('/onlineMembers');
-        // })
-        // .catch(err => {
-        //     console.log(JSON.stringify(err));
-        //     this.setState({ errorMessage: "User already exists." });
-        // })
     }
 
     render() {
         const { validated } = this.state;
         return (
             <div>
-              
+
                 <Container style={containerStyle}>
 
                     <Form
@@ -155,7 +146,7 @@ class Registration extends React.Component {
 
 
 
-                        <FormGroup>
+                       {/* <FormGroup>
                             <Label style={label} for="exampleDate">Date</Label>
                             <Input
                                 type="date"
@@ -168,7 +159,10 @@ class Registration extends React.Component {
                             <FormControl.Feedback type="invalid" style={invalid}>
                                 Please put valid birthday
                 </FormControl.Feedback>
-                        </FormGroup>
+                       </FormGroup>*/}
+
+
+
 
 
 
@@ -220,6 +214,16 @@ class Registration extends React.Component {
                                 Please choose your gender.
           </Form.Control.Feedback>
                         </Form.Group>
+                        <br></br>
+
+                        <FormGroup >
+                        <Label for="exampleFile" style={label}>Upload Photo</Label>
+                        <Col>
+                            <Input type="file" name="file" />
+
+                        </Col>
+                    </FormGroup>
+
 
                         <br></br>
 
@@ -230,6 +234,11 @@ class Registration extends React.Component {
                                 feedback="You must agree before submitting."
                             />
                         </Form.Group>
+
+
+                     
+
+
                         <br></br>
                         <Button style={button} on={this.handleSubmit} type="submit">Submit form</Button>
                     </Form>
@@ -242,4 +251,4 @@ class Registration extends React.Component {
 
 
 
-export default Registration;
+export default RegistrationForm;
