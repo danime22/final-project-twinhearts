@@ -49,8 +49,20 @@ const buttonDiv = {
     margin: "5px 15px"
 }
 
+const button = {
+    width: "40px",
+    height: "30px"
+}
+
 const memberContainer = {
     background: "rgba(0,204,153, 0.5)",
+}
+
+
+const imgIcon = {
+    width: "35px",
+    height: "35px",
+    color: "red"
 }
 
 class MembersList extends Component {
@@ -108,13 +120,13 @@ class MembersList extends Component {
         }
     }
 
-
-
-    handleFavoriteSelection(favId) {
-        let user = session.get("user");
-
+    getProfilePath(userId) {
+        return "/profile/" + userId;
     }
 
+    getMessagePath(userId) {
+        return "/messages/" + userId;
+    }
 
 
 
@@ -131,13 +143,17 @@ class MembersList extends Component {
                                     <CardTitle><p style={fontName}>{member.name}</p></CardTitle>
                                     <CardSubtitle><p style={fontText}>{member.gender}</p></CardSubtitle>
                                     <CardSubtitle><p style={fontText}>{member.state}</p></CardSubtitle>
-                                    <Link to="/profile/123456" className={window.location.pathname === "/profile/123456" ? "nav-link active" : "nav-link"}><CardImg src="http://via.placeholder.com/640x770" /> </Link>
+                                    <Link to={this.getProfilePath(member._id)} className={window.location.pathname === this.getProfilePath(member._id) ? "nav-link active" : "nav-link"}><CardImg src="http://via.placeholder.com/640x770" /> </Link>
                                     <div style={buttonDiv}>
-
-                                        <button >Mail</button>
-                                        <button data-id={member._id} onClick={this.handleFavoriteClick} >{this.getFavText(member._id)}</button>
+                                    <i class="material-icons">
+                                    account_box
+                                    </i>
+                                        <Link to={this.getMessagePath(member._id)} className={window.location.pathname === this.getMessagePath(member._id) ? "nav-link active" : "nav-link"}><img src="https://img.icons8.com/color/48/000000/communication.png" style={imgIcon}alt="icon"/></Link>
+                                        <button data-id={member._id} onClick={this.handleFavoriteClick} >{this.getFavText(member._id)}<i class="material-icons">
+                                        account_box
+                                        </i></button>
                                         {/* <button data-id={member._id} onClick={(event) => { event.preventDefault(); this.handleFavoriteSelection(member._id) }}>fav<span className="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>*/}
-                                        <button>Wink</button>
+                                        <button><img src="https://img.icons8.com/color/26/000000/wink.png" style={imgIcon} alt="wink"/></button>
 
                                     </div>
 

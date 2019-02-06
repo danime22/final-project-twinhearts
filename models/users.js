@@ -4,20 +4,10 @@ const Schema = mongoose.Schema;
 const DataSchema = new Schema(
     {
         name: String,
-        birthday: Date,
-        gender: {
-            type: String,
-            required: true
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true
-        },
-        password: {
-            type: String,
-            required: true
-        },
+        birthday: { type: Date, default: Date.now },
+        gender: String,
+        email: String,
+        password: String,
         city: String,
         state: String,
         zip: {
@@ -25,7 +15,7 @@ const DataSchema = new Schema(
             required: true
         },
         favorites: [String],
-        lastActivity: Date,
+        lastActivity: { type: Date, default: Date.now },
         profile: {
             headline: String,
             description: String,
