@@ -33,7 +33,18 @@ export default {
 
     },
 
-
+    search: params => {
+        let URI = "";
+        for (var property in params) {
+            if (params.hasOwnProperty(property)) {
+                 if (params[property] !== ""){
+                     URI += property + "=" + params[property] + "&";
+                 }
+            }
+        }
+        let newURI = URI.substr(0, URI.length - 1);
+        return axios.get(`/api/users/search?${newURI}`);
+    },
 
     saveUser: data => {
         console.log("saving: " + JSON.stringify(data));

@@ -36,7 +36,12 @@ const label = {
 
 
 
-class Registration extends React.Component {
+class RegistrationForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+        this.state = props.initialState;
+    }
 
     state = {
         validated: false,
@@ -74,21 +79,14 @@ class Registration extends React.Component {
         // if (form.checkValidity() === false) {
         //     event.preventDefault();
         //     event.stopPropagation();
+        //     this.setState({ validated: false })
+        // } else {
+        //     this.setState({ validated: true });
+        //     this.props.onRegister(this.state);
         // }
 
-        // this.setState({ validated: true });
-
-        // this.props.onRegister(this.state);
-
-        // API.saveUser(data)
-        // .then(res => {
-        //     console.log(JSON.stringify(res));
-        //     this.props.history.push('/onlineMembers');
-        // })
-        // .catch(err => {
-        //     console.log(JSON.stringify(err));
-        //     this.setState({ errorMessage: "User already exists." });
-        // })
+        //TODO: Validation logic from state values
+        this.props.onRegister(this.state);
     }
 
     render() {
@@ -273,4 +271,4 @@ class Registration extends React.Component {
 
 
 
-export default Registration;
+export default RegistrationForm;

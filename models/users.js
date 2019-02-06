@@ -10,7 +10,10 @@ const DataSchema = new Schema(
         password: String,
         city: String,
         state: String,
-        zip: Number,
+        zip: {
+            type: Number,
+            required: true
+        },
         favorites: [String],
         lastActivity: { type: Date, default: Date.now },
         profile: {
