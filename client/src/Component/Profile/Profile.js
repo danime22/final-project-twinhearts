@@ -10,8 +10,9 @@ class Profile extends Component {
         super(props);
         this.props = props;
         this.toggle = this.toggle.bind(this);
-            this.state = {
-              activeTab: '1'
+        this.state = {
+              activeTab: '1',
+              name: ""
     };
     }
     toggle(tab) {
@@ -72,7 +73,7 @@ class Profile extends Component {
                 <p>Do you have childern?</p>
                 <p>Do you like to travel?</p>
                 <p>What is your body type?</p>
-                <Link to="EditProfile" className={window.location.pathname === "EditProfile" }>
+                <Link to="/profile/editprofile" className={window.location.pathname === "EditProfile" }>
                                 Edit 
                     </Link>
 

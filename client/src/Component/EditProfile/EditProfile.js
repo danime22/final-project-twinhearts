@@ -10,7 +10,10 @@ class EditProfile extends Component {
 
         console.log(JSON.stringify(props));
 
-       this.state = props.initialState;
+       //this.state = props.initialState;
+       this.state = {
+           name: ""
+       }
     }
 
     handleInputChange = event => {
@@ -36,7 +39,7 @@ class EditProfile extends Component {
     render() {
         return (
 
-            <div>
+            <div style={{ color: "white"}}>
                 <Container>
                     <Row>
                         <Col>
