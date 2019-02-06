@@ -1,90 +1,99 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Container, Card, CardBody, CardTitle, CardImg, CardSubtitle, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Row, Col } from 'reactstrap';
+import { Container, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
+
+const memberStyle = {
+    boxShadow: "0  15px 25px rgba(0,0,0,5)",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "20px"
+}
+
+const fontName = {
+    fontSize: "25px",
+    fontFamily: "Times, New Roman, Times, serif",
+    color: "#99FFFF"
+}
+
+const fontText = {
+    color: "#F8F8F8",
+    fontFamily: "Times, New Roman, Times, serif"
+
+}
+
+const cardContainer = {
+    padding: "0.5em",
+    margin: "25vh auto 0",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center"
+
+}
+
+const cardMember = {
+    background: "#007bff",
+    margin: "0.5em",
+    width: "300px",
+  
+}
+
+const buttonDiv = {
+        padding: "5px",
+        margin: "5px 15px"
+}
+
+const memberContainer = {
+    background: "rgba(0,204,153, 0.5)",
+}
 
 class MembersList extends Component {
 
-render() {
-    return (
-
-            <div>
-            <Container>
-                <Row>
-
-                    <Col>
-                        <div className="members-container">
-                            <Card className="member-card">
-
-                                <CardBody>
-                                    <Link to="/profile/123456" className={window.location.pathname === "/profile/123456" ? "nav-link active" : "nav-link"}><CardTitle><p>Name: Harry</p></CardTitle></Link>
-                                    <CardSubtitle>Age: 28</CardSubtitle>
-                                    <CardImg src="http://via.placeholder.com/640x770" />
-                                    <div className="button-div">
-                                        <button><span class="iconify" data-icon="twemoji:envelope" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:winking-face" data-inline="false"></span></button>
-
-                                    </div>
 
 
+    render() {
+        return (
 
-                                </CardBody>
-                            </Card>
+            <div  style={memberContainer}>
 
+                <Container style={cardContainer}>
+                  
+                                {this.props.list.map((member, i) => {
+                                    return (
+                                       
+                                            <Card style={cardMember}>
 
+                                                <CardBody style={memberStyle}>
+                                                    <CardTitle><p style={fontName}>{member.name}</p></CardTitle>
+                                                    <CardSubtitle><p style={fontText}>{member.gender}</p></CardSubtitle>
+                                                    <CardSubtitle><p style={fontText}>{member.state}</p></CardSubtitle>
+                                                    <Link to="/profile/123456" className={window.location.pathname === "/profile/123456" ? "nav-link active" : "nav-link"}><CardImg src="http://via.placeholder.com/640x770" /> </Link>
+                                                    <div style={buttonDiv}>
 
-                            <Card className="member-card">
+                                                        <button><Link to="/messages" className={window.location.pathname === "/messages"}>
+                                                            <span className="iconify" data-icon="twemoji:envelope" data-inline="false"></span>
+                                                        </Link></button>
 
-                                <CardBody>
-                                <Link to="/profile/111111" className={window.location.pathname === "/profile/111111" ? "nav-link active" : "nav-link"}><CardTitle>Name: Coleman</CardTitle></Link>
-                                    <CardSubtitle>Age: 27</CardSubtitle>
-                                    <CardImg src="http://via.placeholder.com/640x770" />
-                                    <div className="button-div">
-                                        <button><span class="iconify" data-icon="twemoji:envelope" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:winking-face" data-inline="false"></span></button>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                                                        <button><span className="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>
+                                                        <button><span className="iconify" data-icon="twemoji:winking-face" data-inline="false"></span></button>
 
-                            <Card className="member-card">
+                                                    </div>
 
-                                <CardBody>
-                                    <CardTitle>Name: Steven</CardTitle>
-                                    <CardSubtitle>Age: 30</CardSubtitle>
-                                    <CardImg src="http://via.placeholder.com/640x770" />
-                                    <div className="button-div">
-                                        <button><span class="iconify" data-icon="twemoji:envelope" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:winking-face" data-inline="false"></span></button>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                                                </CardBody>
+                                            </Card>
+                                  
 
+                                    )
 
-                            <Card className="member-card">
+                                })}
 
-                                <CardBody>
-                                    <CardTitle>Name: Aaron</CardTitle>
-                                    <CardSubtitle>Age: 29</CardSubtitle>
-                                    <CardImg src="http://via.placeholder.com/640x770" />
-                                    <div className="button-div">
-                                        <button><span class="iconify" data-icon="twemoji:envelope" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>
-                                        <button><span class="iconify" data-icon="twemoji:winking-face" data-inline="false"></span></button>
-                                    </div>
-                                </CardBody>
-                            </Card>
+                      
+                   
 
-                        </div>
-                    </Col>
-                </Row>
-
-            </Container>
-        </div>
-    )
-}
+                </Container>
+            </div>
+        )
+    }
 }
 
 export default MembersList;

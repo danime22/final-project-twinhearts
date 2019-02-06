@@ -1,23 +1,36 @@
 import axios from "axios";
-// const booksAPI = "https://www.googleapis.com/books/v1/volumes?q=";
+
 
 export default {
-getUsers: () => {
-    console.log("hello");
-    return axios.get("/api/users");
-    
-},
 
-search: query => {
-    return axios.get(query);
-},
+    userLogin: (user) => {
+        // console.log("loged in");
+        // return axios.post("/api/login");
 
-saveUser: data => {
-    console.log("saving: " + JSON.stringify(data));
-    return axios.post("/api/users", data);
-},
+        return axios.post("/api/users/login", user)
+    },
 
-deleteUser: id => {
-    return axios.delete("api/users", + id);
-}
+    onlineUsers: (userId) => {
+        return axios.get("/api/users/onlineUsers/" + userId);
+    },
+
+
+    getUsers: () => {
+        return axios.get("/api/users");
+
+    },
+
+    search: (zipcode, distance) => {
+
+        return axios.get(`/api/users/search?zipcode=${zipcode}&distance=${distance}`);
+    },
+
+    saveUser: data => {
+        console.log("saving: " + JSON.stringify(data));
+        return axios.post("/api/users", data);
+    },
+
+    deleteUser: id => {
+        return axios.delete("api/users", + id);
+    }
 }

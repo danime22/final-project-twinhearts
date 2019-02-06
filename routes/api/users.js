@@ -12,4 +12,11 @@ router.route("/:id")
 .put(usersController.update)
 .delete(usersController.remove);
 
+router.route("/login")
+.post(usersController.login);
+
+router.route("/onlineUsers/:currentUserId")
+.get(usersController.onlineUsers);
+
+
 module.exports = router;

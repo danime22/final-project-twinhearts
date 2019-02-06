@@ -23,7 +23,7 @@ class App extends Component {
           <Route exact path="/messages/:id" component={MessagesPage} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/profile/:id" component={ProfilePage} />
-          <Route exact path="/EditProfile" component={EditProfile} />
+        
         </div>
 
       </Router>
