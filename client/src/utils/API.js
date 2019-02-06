@@ -4,8 +4,6 @@ import axios from "axios";
 export default {
 
     userLogin: (user) => {
-        // console.log("loged in");
-        // return axios.post("/api/login");
 
         return axios.post("/api/users/login", user);
     },
@@ -17,16 +15,16 @@ export default {
     },
 
     addFavorite: (userId, favId) => {
-        return axios.post("/api/users/addFavorite", {userId: userId, favUserId: favId}); 
+        return axios.post("/api/users/addFavorite", { userId: userId, favUserId: favId });
     },
 
 
     removeFavorite: (userId, favId) => {
-        return axios.post("/api/users/removeFavorite", {userId: userId, favUserId: favId}); 
+        return axios.post("/api/users/removeFavorite", { userId: userId, favUserId: favId });
     },
 
     favoriteUsers: (userId) => {
-return axios.get("/api/users/favorites/" + userId)
+        return axios.get("/api/users/favorites/" + userId)
     },
 
 
@@ -35,10 +33,7 @@ return axios.get("/api/users/favorites/" + userId)
 
     },
 
-    search: (zipcode, distance) => {
 
-        return axios.get(`/api/users/search?zipcode=${zipcode}&distance=${distance}`);
-    },
 
     saveUser: data => {
         console.log("saving: " + JSON.stringify(data));
@@ -53,8 +48,12 @@ return axios.get("/api/users/favorites/" + userId)
         return axios.post("/api/messages/", data);
     },
 
-    getMessages: (userId) => {
-        return axios.get("/api/messages/" + userId);
+    getMessages: (id) => {
+        return axios.get("/api/messages/" + id);
+    },
+
+    getMessagesForUser: (userId) => {
+        return axios.get("/api/messages/getMessagesForUser/" + userId);
     },
 
     addMessage: (data) => {

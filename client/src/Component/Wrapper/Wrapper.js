@@ -75,6 +75,7 @@ class WrapPage extends Component {
                         <Form className="form-div" onSubmit={this.onSubmit}>
 
                             <FormGroup className="group-form">
+                         
                                 <Input className="input-div" type="email" name="email" id="exampleEmail" placeholder="Enter Email" value={this.state.email} onChange={this.onChange} />
                             </FormGroup>
 

@@ -37,14 +37,10 @@ const label = {
 
 
 class Registration extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-        this.state = props.initialState;
-    }
 
-    componentDidMount() {
-        this.setState({ validated: false });
+    state = {
+        validated: false,
+        imgSrc: '',
     }
 
     handleInputChange = event => {
@@ -60,19 +56,29 @@ class Registration extends React.Component {
 
     }
 
+    selectFile = event => {
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]); 
+        reader.onloadend = () => {
+            const base64data = reader.result;
+            this.setState({ imgSrc: base64data })
+        }
+    }
+
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const form = event.currentTarget;
+        console.log(this.state.imgSrc)
+        // const form = event.currentTarget;
 
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+        // if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        // }
 
-        this.setState({ validated: true });
+        // this.setState({ validated: true });
 
-        this.props.onRegister(this.state);
+        // this.props.onRegister(this.state);
 
         // API.saveUser(data)
         // .then(res => {
@@ -152,7 +158,7 @@ class Registration extends React.Component {
 
 
 
-                       {/* <FormGroup>
+                        {/* <FormGroup>
                             <Label style={label} for="exampleDate">Date</Label>
                             <Input
                                 type="date"
@@ -166,6 +172,22 @@ class Registration extends React.Component {
                                 Please put valid birthday
                 </FormControl.Feedback>
                        </FormGroup>*/}
+
+                        {/*<FormGroup controlId="validationCustomDate">
+                            <Form.Label for="exampleDate">Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                name="date"
+                                id="exampleDate"
+                                placeholder="date placeholder"
+                                value={this.state.birthday}
+                                onChange={this.handleInputChange} 
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Please provide birthday.
+            </Form.Control.Feedback>
+
+                    </FormGroup>*/}
 
 
 
@@ -222,17 +244,14 @@ class Registration extends React.Component {
                         </Form.Group>
                         <br></br>
 
+
                         <FormGroup >
-                        <Label for="exampleFile" style={label}>Upload Photo</Label>
-                        <Col>
-                            <Input type="file" name="file" />
-
-                        </Col>
-                    </FormGroup>
-
-
+                            <Label for="exampleFile" style={label}>Upload Photo</Label>
+                            <Col>
+                                <Input onChange={this.selectFile} type="file" name="file" />
+                            </Col>
+                        </FormGroup>
                         <br></br>
-
                         <Form.Group>
                             <Form.Check
                                 required
@@ -240,12 +259,9 @@ class Registration extends React.Component {
                                 feedback="You must agree before submitting."
                             />
                         </Form.Group>
-
-
-                     
-
-
                         <br></br>
+
+
                         <Button style={button} on={this.handleSubmit} type="submit">Submit form</Button>
                     </Form>
 

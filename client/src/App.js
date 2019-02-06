@@ -4,9 +4,11 @@ import Wrapper from "./Component/Wrapper/Wrapper";
 import RegistrationPage from "./Component/RegistrationPage/RegistrationPage";
 import MembersOnlinePage from "./Component/MembersOnlinePage/MembersOnlinePage";
 import ProfilePage from "./Component/ProfilePage/ProfilePage";
+import ViewProfilePage from "./Component/ViewProfilePage/ViewProfilePage";
 import MessagesPage from "./Component/MessagesPage/MessagesPage";
 import SearchPage from "./Component/SearchPage/SearchPage";
 import FavoritePage from "./Component/FavoritePage/FavoritePage";
+
 
 class App extends Component {
 
@@ -21,9 +23,10 @@ class App extends Component {
           <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/onlineMembers" component={MembersOnlinePage} />
           <Route exact path="/messages" component={MessagesPage} />
-          <Route exact path="/messages/:id" component={MessagesPage} />
+          <Route exact path="/messages/:userId" component={MessagesPage} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/profile/:id" component={ProfilePage} />
+          <Route exact path="/viewProfile" component={ViewProfilePage} />
           <Route exact path="/favorites" component={FavoritePage}  />
         
         </div>

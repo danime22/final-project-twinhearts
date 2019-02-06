@@ -51,20 +51,15 @@ function Navbar() {
                         <li className="nav-item">
 
                             <Link to="/onlineMembers" className={window.location.pathname === "/onlineMembers" ? "nav-link active" : "nav-link"}>
-                                <span style={iconOnline} className="iconify" data-icon="whh:skypeonline" data-inline="false"></span>
+                                Members
                             </Link>
                         </li>
 
-                        <li className="nav-item">
-
-                            <Link to="/onlineMembers" className={window.location.pathname === "/onlineMembers" ? "nav-link active" : "nav-link"}>
-                                <span className="iconify" data-icon="whh:skypeoffline" data-inline="false"></span>
-                            </Link>
-                        </li>
+                      
 
                         <li className="nav-item">
 
-                            <Link to="/register" className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}>
+                            <Link to="/viewProfile" className={window.location.pathname === "/viewProfile" ? "nav-link active" : "nav-link"}>
                                 Edit Profile
                     </Link>
                         </li>

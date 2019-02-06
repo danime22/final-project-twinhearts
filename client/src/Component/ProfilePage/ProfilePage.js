@@ -4,6 +4,7 @@ import Profile from "../Profile/Profile";
 
 class ProfilePage extends Component {
 
+
     render() {
         return (
             <div>

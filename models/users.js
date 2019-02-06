@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const DataSchema = new Schema(
     {
         name: String,
-        birthday: Date,
+        birthday: { type: Date, default: Date.now },
         gender: String,
         email: String,
         password: String,
@@ -12,7 +12,7 @@ const DataSchema = new Schema(
         state: String,
         zip: Number,
         favorites: [String],
-        lastActivity: Date,
+        lastActivity: { type: Date, default: Date.now },
         profile: {
             headline: String,
             description: String,
