@@ -3,7 +3,7 @@ import { Container } from "reactstrap";
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { FormGroup, Label, Input, Col, FormText } from "reactstrap";
+import { FormGroup, Label, Input, Col, FormFeedback } from "reactstrap";
 
 
 const containerStyle = {
@@ -36,16 +36,16 @@ const label = {
 
 
 
-class RegistrationForm extends React.Component {
+class Registration extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
         this.state = props.initialState;
     }
 
-    state = {
-        validated: false,
-        imgSrc: '',
+    componentDidMount() {
+        this.setState({ validated: false });
+        this.setState({imgSrc: " "})
     }
 
     handleInputChange = event => {
@@ -63,7 +63,7 @@ class RegistrationForm extends React.Component {
 
     selectFile = event => {
         var reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]); 
+        reader.readAsDataURL(event.target.files[0]);
         reader.onloadend = () => {
             const base64data = reader.result;
             this.setState({ imgSrc: base64data })
@@ -73,20 +73,27 @@ class RegistrationForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.imgSrc)
-        // const form = event.currentTarget;
+        alert(this.state.imgSrc)
+        const form = event.currentTarget;
 
-        // if (form.checkValidity() === false) {
-        //     event.preventDefault();
-        //     event.stopPropagation();
-        //     this.setState({ validated: false })
-        // } else {
-        //     this.setState({ validated: true });
-        //     this.props.onRegister(this.state);
-        // }
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
 
-        //TODO: Validation logic from state values
+        this.setState({ validated: true });
+
         this.props.onRegister(this.state);
+
+        // API.saveUser(data)
+        // .then(res => {
+        //     console.log(JSON.stringify(res));
+        //     this.props.history.push('/onlineMembers');
+        // })
+        // .catch(err => {
+        //     console.log(JSON.stringify(err));
+        //     this.setState({ errorMessage: "User already exists." });
+        // })
     }
 
     render() {
@@ -140,7 +147,7 @@ class RegistrationForm extends React.Component {
 
 
                         <FormGroup>
-                            <Label style={label} for="exampleDate">Password</Label>
+                            <Label style={label} >Password</Label>
                             <Input
                                 type="password"
                                 name="password"
@@ -155,40 +162,20 @@ class RegistrationForm extends React.Component {
                         </FormGroup>
 
 
+                        <FormGroup>
+                        <Label style={label} for="exampleDate">Birthday</Label>
+                        <Input
+                          type="date"
+                          name="birthday"
+                          id="exampleDate"
+                          placeholder="date placeholder"
+                          value={this.state.birthday}
+                          onChange={this.handleInputChange} 
+                        />
+                        <FormFeedback type="invalid">Please put a valid birthday</FormFeedback>
+                      </FormGroup>
 
-                        {/* <FormGroup>
-                            <Label style={label} for="exampleDate">Date</Label>
-                            <Input
-                                type="date"
-                                name="date"
-                                id="exampleDate"
-                                placeholder="date placeholder"
-                                value={this.state.birthday}
-                                onChange={this.handleInputChange} required
-                            />
-                            <FormControl.Feedback type="invalid" style={invalid}>
-                                Please put valid birthday
-                </FormControl.Feedback>
-                       </FormGroup>*/}
-
-                        {/*<FormGroup controlId="validationCustomDate">
-                            <Form.Label for="exampleDate">Date</Form.Label>
-                            <Form.Control
-                                type="date"
-                                name="date"
-                                id="exampleDate"
-                                placeholder="date placeholder"
-                                value={this.state.birthday}
-                                onChange={this.handleInputChange} 
-                            />
-                            <Form.Control.Feedback type="invalid">
-                                Please provide birthday.
-            </Form.Control.Feedback>
-
-                    </FormGroup>*/}
-
-
-
+                
 
 
 
@@ -202,6 +189,9 @@ class RegistrationForm extends React.Component {
                                     Please provide a valid city.
               </Form.Control.Feedback>
                             </Form.Group>
+
+
+
                             <Form.Group controlId="validationCustom04">
                                 <Form.Label style={label}>State</Form.Label>
                                 <Form.Control value={this.state.state}
@@ -242,14 +232,17 @@ class RegistrationForm extends React.Component {
                         </Form.Group>
                         <br></br>
 
-
                         <FormGroup >
                             <Label for="exampleFile" style={label}>Upload Photo</Label>
                             <Col>
                                 <Input onChange={this.selectFile} type="file" name="file" />
+
                             </Col>
                         </FormGroup>
+
+
                         <br></br>
+
                         <Form.Group>
                             <Form.Check
                                 required
@@ -257,9 +250,12 @@ class RegistrationForm extends React.Component {
                                 feedback="You must agree before submitting."
                             />
                         </Form.Group>
+
+
+
+
+
                         <br></br>
-
-
                         <Button style={button} on={this.handleSubmit} type="submit">Submit form</Button>
                     </Form>
 
@@ -271,4 +267,4 @@ class RegistrationForm extends React.Component {
 
 
 
-export default RegistrationForm;
+export default Registration;

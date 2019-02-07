@@ -4,7 +4,9 @@ import MessageList from "../MessageList/MessageList";
 import MessageBox from "../MessageBox/MessageBox";
 import API from "../../utils/API";
 import session from "../../utils/Session";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Label, Input } from "reactstrap";
+import "./MessagesPage.css"
+import { SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION } from 'constants';
 
 
 const containerStyle = {
@@ -14,15 +16,14 @@ const containerStyle = {
 
 const rowStyle = {
   padding: "0.5em",
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
- 
+  marginBottom: "10px"
+
 }
 
 const colStyle = {
   margin: "0.5em",
-  alignItems: "center"
+  alignItems: "center",
+
 }
 
 
@@ -36,25 +37,59 @@ export default class MessagesPage extends React.Component {
 
     this.state = {
       messagesList: [],
-      currentMessage: [],
-      currentName: ""
+      currentMessages: [],
+      currentName: "",
+      currentMessageId: ""
     };
   }
-
+  // DD: get the user on the message to send.
   componentDidMount() {
-    console.log("message page");
     let user = session.get("user");
     API.getMessagesForUser(user._id).then(res => {
+      let messageList = res.data;
 
-      if (this.props.match.params.userId) {
+      let otherUserId = this.props.match.params.userId;
+      if (otherUserId) {
+        let m = this.getMessageByUserId(messageList, otherUserId);
 
-        let m = this.getMessageByUserId(this.props.match.params.userId);
+        if (m) {  // we already have messages with this user, so just get the messages and display.
+          API.getMessages(m._id)
+            .then((res2) => {
+              this.setState({
+                messagesList: messageList,
+                currentMessages: res2.data.messages,
+                currentName: m.otherUserName,
+                currentMessageId: m._id
+              });
+            });
 
-     
+        } else { // we don't have messages with this user so we need to create.
+          let user = session.get("user");
+          let message = {
+            user1Id: user._id,
+            user2Id: this.props.match.params.userId,
+            messages: []
+          }
 
-        // if we do, set that as the messages for the right
-        // if not, create a new message between this user and that user in the DB,
-        //    add the return from DB to the messagesList in state and setState
+          API.createMessage(message)
+            .then((res3) => {
+              let newMessageId = res3.data._id;
+              // we need to refresh the message List to now include that user.
+              API.getMessagesForUser(user._id).then(res => {
+                let messageList = res3.data;
+                let m = this.getMessageByUserId(this.props.match.params.userId);
+                API.getMessages(newMessageId)
+                  .then((res4) => {
+                    this.setState({
+                      messagesList: messageList,
+                      currentMessages: [],
+                      currentName: m.otherUserName,
+                      currentMessageId: newMessageId
+                    });
+                  });
+              });
+            });
+        }
 
 
       } else {
@@ -69,24 +104,48 @@ export default class MessagesPage extends React.Component {
       });
   }
 
+
+  onSend = (text) => {
+    let m = {
+      userId: session.get("user")._id,
+      text: text,
+      date: null
+    };
+
+
+    API.addMessage({
+      messageId: this.state.currentMessageId,
+      message: m
+    })
+      .then(res => {
+        let messages = this.state.currentMessages;
+        messages.push(m);
+        this.setState({ currentMessages: messages });
+      })
+      .catch(err => console.log(err));
+  }
+
   displayMessage = (messageId, name) => {
     API.getMessages(messageId)
       .then(res => {
         this.setState({
-          currentMessage: res.data.messages,
-          currentName: name
+          currentMessages: res.data.messages,
+          currentName: name,
+          currentMessageId: messageId
         });
       })
       .catch(err => console.log(err));
   }
 
-  getMessageByUserId(userId) {
+  getMessageByUserId(messageList, userId) {
+
     let message = null;
     let i = 0;
-    for (i = 0; i < this.state.messagesList; i++) {
-      let m = this.state.messagesList[i];
+    for (i = 0; i < messageList.length; i++) {
+      let m = messageList[i];
       if (m.user1Id === userId || m.user2Id === userId) {
         message = m;
+        console.log("found message by ID");
         break;
       }
     }
@@ -94,18 +153,18 @@ export default class MessagesPage extends React.Component {
     return message;
   }
 
-  // getMessageById(messageId) {
-  //   let messages = [];
-  //   let i=0;
-  //   for(i=0; i<this.state.messagesList.length; i++) {
-  //     if(this.state.messagesList[i]._id === messageId) {
-  //       messages = this.state.messagesList[i].messages;
+  getMessageById(messageId) {
+    let messages = [];
+    let i = 0;
+    for (i = 0; i < this.state.messagesList.length; i++) {
+      if (this.state.messagesList[i]._id === messageId) {
+        messages = this.state.messagesList[i].messages;
 
-  //       break;
-  //     }
-  //   }
-  //   return messages;
-  // }
+        break;
+      }
+    }
+    return messages;
+  }
 
   render() {
     return (
@@ -115,17 +174,19 @@ export default class MessagesPage extends React.Component {
 
 
         <Container style={containerStyle}>
-        
+
           <Row style={rowStyle}>
             <Col sm="4">
               <MessageList list={this.state.messagesList} onMessageSelect={this.displayMessage} />
             </Col>
+
+
             <Col style={colStyle}>
-              <MessageBox list={this.state.currentMessage} name={this.state.currentName}/>
+              <MessageBox list={this.state.currentMessages} name={this.state.currentName} onSend={this.onSend} />
               <br></br> <br></br>
-              {/*<Button color="success">Send</Button>*/}
-              </Col>
-              
+
+            </Col>
+
           </Row>
         </Container>
 

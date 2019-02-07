@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+var DateOnly = require('mongoose-dateonly')(mongoose);
 const Schema = mongoose.Schema;
 
 const DataSchema = new Schema(
     {
         name: String,
-        birthday: { type: Date, default: Date.now },
+        birthday: DateOnly,
         gender: String,
         email: String,
         password: String,
@@ -15,7 +16,7 @@ const DataSchema = new Schema(
             required: true
         },
         favorites: [String],
-        lastActivity: { type: Date, default: Date.now },
+        lastActivity: DateOnly,
         profile: {
             headline: String,
             description: String,

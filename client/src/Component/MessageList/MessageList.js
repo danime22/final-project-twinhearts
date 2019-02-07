@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
+import "./MessageList.css";
 
 const imageStyle = {
     height: "150px",
     width: "150px"
+}
+
+const color = {
+    color: "red"
 }
 
 
@@ -30,13 +35,16 @@ class MessagesList extends Component {
                             return (
                                 <Row key={message._id}>
                                     <Col><img  style={imageStyle}src="http://via.placeholder.com/6500x700" alt="examplePic"></img>
-                                        <Link to="#" onClick={this.handleMessageClick} alt="link"><h4  data-id={message._id} data-name={message.otherUserName}>{message.otherUserName}</h4></Link>
+                                        <Link to="#" onClick={this.handleMessageClick} alt="link"><h4 style={color} data-id={message._id} data-name={message.otherUserName}>{message.otherUserName}</h4></Link>
                                     </Col>
+                                    
                                 </Row>
+                                
                             )
                         })}
-
+                       
                     </div>
+                    
 
                     )
 

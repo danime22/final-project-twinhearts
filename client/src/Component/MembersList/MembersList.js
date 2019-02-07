@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Container, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'reactstrap';
 import session from "../../utils/Session";
 import API from "../../utils/API";
+import fav from "../../Photos/fav.png";
+import unfav from "../../Photos/unfav.png";
+var moment = require("moment");
 
 
 const memberStyle = {
@@ -42,6 +45,12 @@ const cardMember = {
     margin: "0.5em",
     width: "300px",
 
+
+}
+
+const favImg = {
+    height: "25px",
+    width: "25px"
 }
 
 const buttonDiv = {
@@ -128,6 +137,10 @@ class MembersList extends Component {
         return "/messages/" + userId;
     }
 
+    getAge(birthdate) {
+        return Math.abs(moment(birthdate).fromNow());
+    }
+
 
 
     render() {
@@ -143,15 +156,12 @@ class MembersList extends Component {
                                     <CardTitle><p style={fontName}>{member.name}</p></CardTitle>
                                     <CardSubtitle><p style={fontText}>{member.gender}</p></CardSubtitle>
                                     <CardSubtitle><p style={fontText}>{member.state}</p></CardSubtitle>
+                                    <CardSubtitle><p style={fontText}>Age: {this.getAge(member.birthdate)}</p></CardSubtitle>
                                     <Link to={this.getProfilePath(member._id)} className={window.location.pathname === this.getProfilePath(member._id) ? "nav-link active" : "nav-link"}><CardImg src="http://via.placeholder.com/640x770" /> </Link>
                                     <div style={buttonDiv}>
-                                    <i class="material-icons">
-                                    account_box
-                                    </i>
+                                    
                                         <Link to={this.getMessagePath(member._id)} className={window.location.pathname === this.getMessagePath(member._id) ? "nav-link active" : "nav-link"}><img src="https://img.icons8.com/color/48/000000/communication.png" style={imgIcon}alt="icon"/></Link>
-                                        <button data-id={member._id} onClick={this.handleFavoriteClick} >{this.getFavText(member._id)}<i class="material-icons">
-                                        account_box
-                                        </i></button>
+                                        <button data-id={member._id} onClick={this.handleFavoriteClick} >{this.getFavText(member._id)}</button>
                                         {/* <button data-id={member._id} onClick={(event) => { event.preventDefault(); this.handleFavoriteSelection(member._id) }}>fav<span className="iconify" data-icon="twemoji:growing-heart" data-inline="false"></span></button>*/}
                                         <button><img src="https://img.icons8.com/color/26/000000/wink.png" style={imgIcon} alt="wink"/></button>
 

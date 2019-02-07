@@ -68,9 +68,8 @@ module.exports = {
                 { $push: { messages: req.body.message } })
             .then(dbModel => res.json(dbModel))
             .catch(err => console.log(err));
-
     }
-
 };
+
 
 
