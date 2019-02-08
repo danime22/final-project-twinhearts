@@ -31,6 +31,7 @@ class App extends Component {
           
           <Route exact path="/favorites" component={FavoritePage}  />
           <Route exact path="/profile/editprofile" component={EditProfile} />
+          <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/profile/:id" component={ProfilePage} />
         </Switch>
         </div>
