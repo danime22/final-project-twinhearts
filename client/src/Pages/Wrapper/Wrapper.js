@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import logo from "../../Photos/clipart361312.png";
+import logo from "../../Photos/twinharts5.png";
 import { Link } from "react-router-dom";
-import Swiper from "../Swiper/Swiper";
+import Swiper from "../../Component/Swiper/Swiper";
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap';
 import "./Wrapper.css";
 import API from "../../utils/API";
@@ -75,6 +75,7 @@ class WrapPage extends Component {
                         <Form className="form-div" onSubmit={this.onSubmit}>
 
                             <FormGroup className="group-form">
+                         
                                 <Input className="input-div" type="email" name="email" id="exampleEmail" placeholder="Enter Email" value={this.state.email} onChange={this.onChange} />
                             </FormGroup>
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import "./RegistrationPage.css";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import RegistrationForm from "../../Component/RegistrationForm/RegistrationForm";
+import ErrorMessage from "../../Component/ErrorMessage/ErrorMessage";
 import session from "../../utils/Session";
 
 
@@ -51,7 +51,7 @@ class RegistrationPage extends Component {
         data["profile"] = profile;
         data["favorites"] = [];
         data["lastActivity"] = null;
-        
+
         this.setState({ formState: data });
         this.setState({ errorMessage: "" });
 
@@ -66,7 +66,7 @@ class RegistrationPage extends Component {
             .then(res => {
                 console.log(JSON.stringify(res));
                 session.save("user", res.data);
-                this.props.history.push("/onlineMembers");
+                this.props.history.push("/editprofile");
             })
             .catch(err => {
                 console.log(JSON.stringify(err));

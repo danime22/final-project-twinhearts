@@ -68,6 +68,7 @@ module.exports = {
   },
   create: function (req, res) {
     console.log("create");
+    console.log(req.params.profilePic);
     db.Users
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -79,6 +80,18 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  saveProfile: function (req, res) {
+    console.log("saving profile for" + req.body.id);
+    db.Users.findOneAndUpdate({ _id: req.body.id }, 
+      { $set: { profile: req.body.profile }}
+    )
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+
+
+
   remove: function (req, res) {
     console.log("delete: " + req.params.id);
     db.Users
@@ -90,33 +103,36 @@ module.exports = {
   search: function (req, res) {
     // console.log(req.query);
     // return res.json({msg: "okay"});
-    if(req.query.distance === "" || req.query.zip === "") {
-      return res.status(400).json({ msg: "You must supply a zip and distance"});
+    if (req.query.distance === "" || req.query.zip === "") {
+      return res.status(400).json({ msg: "You must supply a zip and distance" });
     }
-    
+
+
+
     const url = `https://www.zipcodeapi.com/rest/${process.env.APIKEY}/radius.json/${req.query.zip}/${req.query.distance}/miles`
     axios.get(url).then(response => {
       const zips = response.data.zip_codes
-      const zipcodes = zips.map(zip =>zip.zip_code)
+      const zipcodes = zips.map(zip => zip.zip_code)
 
       const query = {};
       for (var property in req.query) {
         if (req.query.hasOwnProperty(property)) {
-          if(property === "zip" || property === "distance") continue;   
+          if (property === "zip" || property === "distance" || property === "excludeId") continue;
           query[property] = req.query[property];
         }
       }
+      // TODO: Need to exclude current user
       //query mongoose db
       //console.log({...query, zip: { $in: zipcodes }});
-      db.Users.find({...query, zip: { $in: zipcodes }}).then(dbres => {
+      db.Users.find({ ...query, zip: { $in: zipcodes } }).then(dbres => {
         return res.status(200).json(dbres);
-      }).catch(err =>{ 
+      }).catch(err => {
         console.log(err)
         return res.status(418).json(err);
       });
-    }).catch(err =>{ 
+    }).catch(err => {
       console.log(err)
       return res.status(400).json(err);
     });
-   }
+  }
 };

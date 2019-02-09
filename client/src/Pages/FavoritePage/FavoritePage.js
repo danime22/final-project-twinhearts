@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar/Navbar";
-import MembersList from "../MembersList/MembersList";
+import Navbar from "../../Component/Navbar/Navbar";
+import MembersList from "../../Component/MembersList/MembersList";
 import API from "../../utils/API";
 import session from "../../utils/Session";
 

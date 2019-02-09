@@ -1,0 +1,24 @@
+.divIcon {
+    display: flex;
+    flex-direction: row;
+   padding: 0.5em;
+   justify-content: center;
+  
+}
+
+.icon {
+    margin-left: -1px;
+    margin-top: 5px;
+
+}
+
+.icon-fav {
+    margin-top: 15px;
+}
+
+.profileImg {
+ height: 151px;
+ width: 140px;
+
+
+}
