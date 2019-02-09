@@ -14,6 +14,10 @@ export default {
         return axios.get("/api/users/onlineUsers/" + userId);
     },
 
+    saveProfile: (data) => {
+        return axios.post("/api/users/saveProfile", data);
+    },
+
     addFavorite: (userId, favId) => {
         return axios.post("/api/users/addFavorite", { userId: userId, favUserId: favId });
     },
@@ -33,13 +37,17 @@ export default {
 
     },
 
+    getUser: (userId) => {
+        return axios.get("/api/users/" + userId);
+    },
+
     search: params => {
         let URI = "";
         for (var property in params) {
             if (params.hasOwnProperty(property)) {
-                 if (params[property] !== ""){
-                     URI += property + "=" + params[property] + "&";
-                 }
+                if (params[property] !== "") {
+                    URI += property + "=" + params[property] + "&";
+                }
             }
         }
         let newURI = URI.substr(0, URI.length - 1);

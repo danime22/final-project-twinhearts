@@ -36,9 +36,28 @@ class MessageBox extends Component {
         this.props.onSend(this.state.text);
     }
 
+    getMessageForm() {
+        if(this.props.name || (this.state.currentName && this.state.currentName.length > 0) ){
+            return (
+                <Form onSubmit={this.handleSend}>
+                <FormGroup>
+                    <Label for="exampleText">Type here...</Label>
+                    <Input value={this.state.text} onChange={this.handleInputChange} type="textarea" name="text" style={textArea} />
+                    <Button className="button" type="submit">Send</Button>
+                </FormGroup>
+            </Form>
+            )
+        }
+        else {
+            return (
+                <h1>You don't have any coversations</h1>
+            )
+        }
+    }
+
     render() {
         return (
-            <div>
+            <div className="messageB">
                 <h1>{this.props.name}</h1>
                 <Container >
                     {this.props.list.map((message, i) => {
@@ -57,13 +76,7 @@ class MessageBox extends Component {
 
                     })}
                     <br></br><br></br>
-                    <Form onSubmit={this.handleSend}>
-                        <FormGroup>
-                            <Label for="exampleText">Type here...</Label>
-                            <Input value={this.state.text} onChange={this.handleInputChange} type="textarea" name="text" style={textArea} />
-                            <Button className="button" type="submit">Send</Button>
-                        </FormGroup>
-                    </Form>
+                    {this.getMessageForm()}
                 </Container>
 
             </div>

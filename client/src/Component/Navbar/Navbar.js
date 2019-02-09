@@ -6,10 +6,7 @@ import "./Navbar.css";
 
 
 
-const iconOnline = {
-    color: "blue"
-    
-}
+
 
 const logoPic = {
     height: "100px",
@@ -20,7 +17,7 @@ function Navbar() {
 
     return (
         <div>
-            <Nav className="navbar navbar-expand-md bg-primary navbar-light">
+            <Nav className="navbar navbar-expand-md  navbar-light">
 
                 <NavLink className="navbar-brand" href="#"><img style={logoPic} className="logoImage" src={mainLogo} alt="mainlogo" /></NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span className="navbar-toggler-icon"></span></button>
@@ -60,7 +57,7 @@ function Navbar() {
 
                         <li className="nav-item">
 
-                            <Link to="/viewProfile" className={window.location.pathname === "/viewProfile" ? "nav-link active" : "nav-link"}>
+                            <Link to="/editprofile" className={window.location.pathname === "/editprofile" ? "nav-link active" : "nav-link"}>
                                 Edit Profile
                     </Link>
                         </li>

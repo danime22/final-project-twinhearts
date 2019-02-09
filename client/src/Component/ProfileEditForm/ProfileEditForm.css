@@ -1,0 +1,33 @@
+.divProfile {
+margin: 5vh auto 0;
+background-color: #2F4F4F;
+
+}
+
+.labelName {
+    color: #FFFFF0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.containerProfile {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+
+.imgCol {
+margin: 2em;
+}
+
+.about {
+    border: 2px solid green;
+    
+}
+
+.head {
+    width: 100%;
+    border: 2px solid red;
+    background-color: white;
+}

@@ -28,7 +28,7 @@ class MessagesList extends Component {
 
     render() {
         return (
-            <div>
+            <div className="messageL">
                 <Container >
                     <div>
                         {this.props.list.map((message, i) => {

@@ -2,44 +2,39 @@ import React, { Component } from "react";
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import MembersList from "../MembersList/MembersList";
-import API from "../../utils/API";
+import options from "../../utils/options"
+import session from "../../utils/Session";
 
 class SearchForm extends Component {
+    constructor(props) {
+        super(props);
 
-    state = {
+    // CHANGE: removed results - now in search page
+    // CHANGE: defaulted zip to user zip
+    // CHANGE: added current user to exclude from search
+    let user = session.get("user");
+
+    this.state = {
         gender: "",
         distance: "",
-        zip: "",
+        zip: user.zip,
         minAge: "",
         maxAge: "",
         height: "",
         smoke: "",
         drink: "",
-        results: []
+        excludeId: user._id
     }
+}
 
+    // CHANGE: Call parent method
     handleFormSubmit = event => {
         event.preventDefault();
-        // if(this.state.zip && this.state.distance) {
-        //     Axios.search(this.state.zip, this.state.distance).then(response => {})
-        // }
+        
 
         //TODO: Validate state fields before passing
 
-        let searchParams = {};
-        for (var property in this.state) {
-            if (this.state.hasOwnProperty(property)) {
-                if(property === "results") continue;
-                searchParams[property] = this.state[property];
-            }
-        }
-        //console.log(searchParams);
-        API.search(searchParams).then(response => {
-            this.setState({ results: response.data});
-        }).catch(err => {
-            console.log(err);
-        })
+        this.props.onSearch(this.state);
     }
     handleInputChange = e => {
         this.setState({ [e.target.name]: e.target.value });
@@ -51,20 +46,22 @@ class SearchForm extends Component {
         }
     }
 
-
+    // CHANGE: populated drop down with options.js so all options same everywhere
     render() {
         return (
             <div>
-                <p>TODO: put the search form here, then track user input and call the parent when the user searches. See pattern in RegistrationPage</p>
-
+              
                 <div className="container-group">
 
                     <div className="form-group">
                         Gender: <FormGroup >
                             <Input type="select" name="gender" onChange={this.handleInputChange} value={this.state.gender}>
-                                <option>    </option>
-                                <option>Male</option>
-                                <option>Female</option>
+                                <option key={99} value=""></option>
+                                {options.gender.map((gender, i) => {
+                                    return (
+                                        <option key={i} value={gender}>{gender}</option>
+                                    )
+                                })}
                             </Input>
                         </FormGroup>
                     </div>
@@ -72,19 +69,13 @@ class SearchForm extends Component {
                     <div className="form-group">
                         Miles: <FormGroup >
                             <Input type="select" name="distance" onChange={this.handleInputChange} value={this.state.distance} >
-                                <option>       </option>
-                                <option>5</option>
-                                <option>10</option>
-                                <option>15</option>
-                                <option>20</option>
-                                <option>30</option>
-                                <option>40</option>
-                                <option>50</option>
-                                <option>60</option>
-                                <option>70</option>
-                                <option>80</option>
-                                <option>90</option>
-                                <option>100</option>
+                                {options.range.map((range, i) => {
+                                    return (
+                                        <option key={i} value={range}>{range}</option>
+                                    )
+                                })}
+                               
+
                             </Input>
                         </FormGroup>
                     </div>
@@ -158,11 +149,11 @@ class SearchForm extends Component {
                         Height: <FormGroup >
                             <Input type="select" name="height" onChange={this.handleInputChange} value={this.state.height}>
                                 <option>    </option>
-                                <option>any</option>
-                                <option>3'0 to 4'0</option>
-                                <option>4'0 to 5'0</option>
-                                <option>5'0 to 6'0</option>
-                                <option>6'0 and up</option>
+                                {options.height.map((height, i) => {
+                                    return (
+                                        <option key={1} value={height}>{height}</option>
+                                    )
+                                })}
                             </Input>
                         </FormGroup>
                     </div>
@@ -171,10 +162,11 @@ class SearchForm extends Component {
                         Smoke:<FormGroup className="form-been">
                             <Input type="select" name="smoke" onChange={this.handleInputChange} value={this.state.smoke}>
                                 <option>  </option>
-                                <option>yes</option>
-                                <option>no</option>
-                                <option>no preference</option>
-                                <option>no preference</option>
+                                {options.smokingHabits.map((smoke, i) => {
+                                    return (
+                                        <option key={i} value={smoke}>{smoke}</option>
+                                    )
+                                })}
                             </Input>
                         </FormGroup >
                     </div>
@@ -183,9 +175,11 @@ class SearchForm extends Component {
                         Drink:<FormGroup className="form-been">
                             <Input type="select" name="drink" onChange={this.handleInputChange} value={this.state.drink}>
                                 <option>  </option>
-                                <option>yes</option>
-                                <option>no</option>
-                                <option>no preference</option>
+                                {options.drinkingHabits.map((drink, i) => {
+                                    return (
+                                        <option key={i} value={drink}>{drink}</option>
+                                    )
+                                })}
                             </Input>
                         </FormGroup >
                     </div>
@@ -199,11 +193,10 @@ class SearchForm extends Component {
                         </h3>
                     </div>
                 </div>
-                <MembersList list={this.state.results} />
             </div>
         )
-        }
-
     }
 
-    export default SearchForm;
+}
+
+export default SearchForm;

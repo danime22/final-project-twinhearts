@@ -32,6 +32,10 @@
 
 
 .form-been {
-    border: 2px solid blue;
+    border: 2px solid red;
     width: 72px;
+}
+
+.navbar {
+    background-color: #DEB887;
 }

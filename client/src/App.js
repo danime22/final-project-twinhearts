@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Wrapper from "./Component/Wrapper/Wrapper";
-import RegistrationPage from "./Component/RegistrationPage/RegistrationPage";
-import MembersOnlinePage from "./Component/MembersOnlinePage/MembersOnlinePage";
-import ProfilePage from "./Component/ProfilePage/ProfilePage";
-import ViewProfilePage from "./Component/ViewProfilePage/ViewProfilePage";
-import MessagesPage from "./Component/MessagesPage/MessagesPage";
-import SearchPage from "./Component/SearchPage/SearchPage";
-import FavoritePage from "./Component/FavoritePage/FavoritePage";
-import EditProfile from "./Component/EditProfile/EditProfile";
+import Wrapper from "./Pages/Wrapper/Wrapper";
+import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage";
+import MembersOnlinePage from "./Pages/MembersOnlinePage/MembersOnlinePage";
+import ProfilePage from "./Pages/ProfilePage/ProfilePage";
+import ViewProfilePage from "./Pages/ViewProfilePage/ViewProfilePage";
+import MessagesPage from "./Pages/MessagesPage/MessagesPage";
+import SearchPage from "./Pages/SearchPage/SearchPage";
+import FavoritePage from "./Pages/FavoritePage/FavoritePage";
+
+
 
 
 class App extends Component {
@@ -26,12 +27,10 @@ class App extends Component {
           <Route exact path="/messages" component={MessagesPage} />
           <Route exact path="/messages/:userId" component={MessagesPage} />
           <Route exact path="/search" component={SearchPage} />
-        
           <Route exact path="/viewProfile" component={ViewProfilePage} />
-          
           <Route exact path="/favorites" component={FavoritePage}  />
-          <Route exact path="/profile/editprofile" component={EditProfile} />
-          <Route exact path="/profile/:id" component={ProfilePage} />
+          <Route exact path="/editprofile" component={ProfilePage} />
+          <Route exact path="/profile/:userId" component={ViewProfilePage} />
         </Switch>
         </div>
 

@@ -11,6 +11,10 @@ router.route("/register")
 router.route("/onlineUsers/:currentUserId")
 .get(usersController.onlineUsers);
 
+
+router.route("/saveProfile")
+.post(usersController.saveProfile);
+
 router.route("/search")
 .get(usersController.search);
 
