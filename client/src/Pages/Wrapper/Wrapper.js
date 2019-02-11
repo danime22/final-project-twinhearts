@@ -23,13 +23,9 @@ class WrapPage extends Component {
             email: "",
             password: ""
         }
-
     }
 
-
-
     onChange = (event) => {
-
         let value = event.target.value;
         const name = event.target.name;
 
@@ -49,8 +45,8 @@ class WrapPage extends Component {
                         this.props.history.push("/onlineMembers");
                     } else {
                         // TODO handle better
+alert("not log in")
                         
-                        alert("not logged in");
                     }
 
                 }
@@ -75,7 +71,7 @@ class WrapPage extends Component {
                         <Form className="form-div" onSubmit={this.onSubmit}>
 
                             <FormGroup className="group-form">
-                         
+
                                 <Input className="input-div" type="email" name="email" id="exampleEmail" placeholder="Enter Email" value={this.state.email} onChange={this.onChange} />
                             </FormGroup>
 
@@ -90,11 +86,11 @@ class WrapPage extends Component {
                     </div>
                 </Container>
 
-<div className="swiper-div">
+                <div className="swiper-div">
 
-<Swiper />
-</div>
-                
+                    <Swiper />
+                </div>
+
 
             </div>
         );

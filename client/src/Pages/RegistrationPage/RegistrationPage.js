@@ -46,8 +46,10 @@ class RegistrationPage extends Component {
             wouldTravel: null,
             willingToRelocate: null,
             seekingGender: [],
-            photos: []
+            photos: [],
+            profilePic: (data.gender === "Male" ? "male.png" : "female.png")
         }
+
         data["profile"] = profile;
         data["favorites"] = [];
         data["lastActivity"] = null;
