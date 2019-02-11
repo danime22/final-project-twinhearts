@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { FormGroup, Label, Input, Col, FormFeedback, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
+import { FormGroup, Label, Input,  FormFeedback, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import options from '../../utils/options';
 
 
@@ -83,15 +83,6 @@ class Registration extends React.Component {
 
         console.log("new state: " + JSON.stringify(this.state));
         console.log("**************");
-    }
-
-    selectFile = event => {
-        // var reader = new FileReader();
-        // reader.readAsDataURL(event.target.files[0]);
-        // reader.onloadend = () => {
-        //     const base64data = reader.result;
-        //     this.setState({ profilePic: base64data })
-        // }
     }
 
 
@@ -292,25 +283,7 @@ class Registration extends React.Component {
               </Form.Control.Feedback>
                             </Form.Group>
                         </Form>
-
-
-
-
-
                         <br></br>
-
-
-
-                       
-                       {/* <FormGroup >
-                            <Label  className="labName">Upload Photo</Label>
-                            <Col>
-                                <Input onChange={this.selectFile} type="file" name="file" />
-
-                            </Col>
-                       </FormGroup>*/}
-                       
-
                         <br></br>
 
                         <Form.Group>
