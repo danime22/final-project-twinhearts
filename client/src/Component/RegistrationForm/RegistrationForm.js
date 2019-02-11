@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { FormGroup, Label, Input, Col, FormFeedback } from "reactstrap";
+import { FormGroup, Label, Input, Col, FormFeedback, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import options from '../../utils/options';
 
 
@@ -42,13 +42,12 @@ class Registration extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = props.initialState;
+        this.state = {
+            targetGender: [],
+            validated: false
+        };
     }
 
-    componentDidMount() {
-        this.setState({ validated: false });
-        this.setState({profilePic: ""})
-    }
 
     handleInputChange = event => {
         let value = event.target.value;
@@ -61,6 +60,29 @@ class Registration extends React.Component {
         });
 
 
+    }
+
+    handleCheckChange = event => {
+        console.log("**************");
+        console.log(`${event.target.name} = ${event.target.value} - ${event.target.checked}`);
+
+        console.log("state: " + JSON.stringify(this.state));
+
+        if (event.target.checked) {
+            console.log("Checked");
+            let arr = this.state[event.target.name]
+            arr.push(event.target.value);
+            this.setState({ [event.target.name]: arr });
+        } else {
+            console.log("Not");
+            let arr = this.state[event.target.name];
+            console.log(arr.indexOf(event.target.value));
+            arr.splice(arr.indexOf(event.target.value), 1);
+            this.setState({ [event.target.name]: arr });
+        }
+
+        console.log("new state: " + JSON.stringify(this.state));
+        console.log("**************");
     }
 
     selectFile = event => {
@@ -110,6 +132,64 @@ class Registration extends React.Component {
                         onSubmit={this.handleSubmit}
                     >
                         <Form>
+
+                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Label className="labName">I am a...</Form.Label>
+                                <Form.Control as="select" name="gender" value={this.state.gender}
+                                    onChange={this.handleInputChange} required>
+                                    <option disabled selected></option>
+                                    {options.gender.map((gender, i) => {
+                                        return (
+                                            <option value={gender}>{gender}</option>
+                                        )
+                                    })}
+
+                                </Form.Control>
+                                <Form.Control.Feedback type="invalid" style={invalid}>
+                                    Please choose your gender.
+                             </Form.Control.Feedback>
+                            </Form.Group>
+
+                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Label className="labName">Seeking...</Form.Label>
+
+                                <InputGroup>
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <Input addon onChange={this.handleCheckChange} name="targetGender" value="Male" type="checkbox" aria-label="Checkbox for following text input" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input placeholder="Male" />
+
+
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <Input addon onChange={this.handleCheckChange} name="targetGender" value="Female" type="checkbox" aria-label="Checkbox for following text input" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input placeholder="Female" />
+
+
+                                </InputGroup>
+                                {/*
+                        <Form.Control as="select" name="gender" value={this.state.gender}
+                            onChange={this.handleInputChange} required>
+                            <option disabled selected></option>
+                            {options.gender.map((gender, i) => {
+                                return (
+                                    <option value={gender}>{gender}</option>
+                                )
+                            })}
+
+                        </Form.Control>
+                        <Form.Control.Feedback type="invalid" style={invalid}>
+                            Please choose your gender.
+      </Form.Control.Feedback>
+                        */}
+                            </Form.Group>
+
+
+
                             <Form.Group controlId="validationCustom01">
                                 <Form.Label className="labName">Name</Form.Label>
                                 <Form.Control
@@ -136,7 +216,7 @@ class Registration extends React.Component {
                                     type="email"
                                     value={this.state.email}
                                     onChange={this.handleInputChange}
-                                    placeholder="First name"
+                                    placeholder="Email Address"
 
                                 />
                                 <FormControl.Feedback type="invalid" style={invalid}>
@@ -164,19 +244,19 @@ class Registration extends React.Component {
 
 
                         <FormGroup>
-                        <Label className="labName" for="exampleDate">Birthday</Label>
-                        <Input
-                          type="date"
-                          name="birthday"
-                          id="exampleDate"
-                          placeholder="date placeholder"
-                          value={this.state.birthday}
-                          onChange={this.handleInputChange} 
-                        />
-                        <FormFeedback type="invalid">Please put a valid birthday</FormFeedback>
-                      </FormGroup>
+                            <Label className="labName" for="exampleDate">Birthday</Label>
+                            <Input
+                                type="date"
+                                name="birthday"
+                                id="exampleDate"
+                                placeholder="date placeholder"
+                                value={this.state.birthday}
+                                onChange={this.handleInputChange}
+                            />
+                            <FormFeedback type="invalid">Please put a valid birthday</FormFeedback>
+                        </FormGroup>
 
-            
+
 
 
                         <Form>
@@ -204,11 +284,11 @@ class Registration extends React.Component {
 
 
                             <Form.Group controlId="validationCustom05">
-                                <Form.Label className="labName">Zip</Form.Label>
+                                <Form.Label className="labName">Zip Code</Form.Label>
                                 <Form.Control value={this.state.zip}
-                                    onChange={this.handleInputChange} name="zip" type="text" placeholder="Zip" required />
+                                    onChange={this.handleInputChange} name="zip" type="text" placeholder="Zip Code" required />
                                 <Form.Control.Feedback type="invalid" style={invalid}>
-                                    Please provide a valid zip.
+                                    Please provide a valid zip code.
               </Form.Control.Feedback>
                             </Form.Group>
                         </Form>
@@ -216,56 +296,26 @@ class Registration extends React.Component {
 
 
 
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label className="labName">Gender</Form.Label>
-                            <Form.Control as="select" name="gender" value={this.state.gender}
-                                onChange={this.handleInputChange} required>
-                                <option disabled selected></option>
-                                {options.gender.map((gender, i) => {
-                                    return (
-                                        <option value={gender}>{gender}</option>
-                                    )
-                                })}
 
-                            </Form.Control>
-                            <Form.Control.Feedback type="invalid" style={invalid}>
-                                Please choose your gender.
-          </Form.Control.Feedback>
-                        </Form.Group>
                         <br></br>
-                       {/* <Form.Group controlId="exampleForm.ControlSelect1">
-                        <Form.Label className="labName">Seeking</Form.Label>
-                        <Form.Control as="select" name="gender" value={this.state.gender}
-                            onChange={this.handleInputChange} required>
-                            <option disabled selected></option>
-                            {options.gender.map((gender, i) => {
-                                return (
-                                    <option value={gender}>{gender}</option>
-                                )
-                            })}
-
-                        </Form.Control>
-                        <Form.Control.Feedback type="invalid" style={invalid}>
-                            Please choose your gender.
-      </Form.Control.Feedback>
-                        </Form.Group>*/}
 
 
-{/*}
-                        <FormGroup >
+
+                       
+                       {/* <FormGroup >
                             <Label  className="labName">Upload Photo</Label>
                             <Col>
                                 <Input onChange={this.selectFile} type="file" name="file" />
 
                             </Col>
-                        </FormGroup>
-                        */}
+                       </FormGroup>*/}
+                       
 
                         <br></br>
 
                         <Form.Group>
                             <Form.Check
-                            className="labName"
+                                className="labName"
                                 required
                                 label="Agree to terms and conditions"
                                 feedback="You must agree before submitting."

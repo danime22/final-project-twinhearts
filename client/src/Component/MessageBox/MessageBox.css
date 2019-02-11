@@ -10,12 +10,19 @@
 
 .currentUser {
     background-color: #95F7BA;
-    border-radius: 40px;
+    border-radius: 4px;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
     
 }
 
-.row-chat {
-   background-color: #FFFDE4;
+
+.textAre {
+    width: 100%;
+    padding: 20px;
 }
 
+.over {
+    overflow: auto;
+    height: 500px;
+    background-color: #2F4F4F;
+}

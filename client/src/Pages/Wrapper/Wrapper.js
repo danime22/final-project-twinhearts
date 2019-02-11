@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../../Photos/twinharts5.png";
+import logo from "../../Photos/twinharts11.png";
 import { Link } from "react-router-dom";
 import Swiper from "../../Component/Swiper/Swiper";
 import { Container, Form, FormGroup, Button, Input } from 'reactstrap';

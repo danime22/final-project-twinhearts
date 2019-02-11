@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
+.user-name {
+    color: 	#FFFAFA;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: 'Noto Serif', serif;
+
+}
+
+.val-name {
+    color: #F0FFF0;
+    font-family: 'Noto Serif', serif;
+    font-size: 21px;
+}
+
+.car-text {
+    color: 	#FAEBD7;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Noto Serif', serif;
+}
+
+.card-bod {
+    background-color: 	#696969;
+}
+
+.button-profile {
+    height: 36px;
+    width: 100%;
+    margin: 2px;
+    border-radius: 2px;
+    color: #00BFFF;
+    background: #FAEBD7;
+}
+
+
+
+.col-value {
+    text-align: start;
+}

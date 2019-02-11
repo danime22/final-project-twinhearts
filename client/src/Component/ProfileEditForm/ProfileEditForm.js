@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import options from "../../utils/options";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Card, CardBody, CardText, CardImg, } from 'reactstrap';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Container } from 'reactstrap';
-import classnames from 'classnames';
+import { Card, CardBody, CardText, CardImg, Container} from 'reactstrap';
 import "../ProfileEditForm/ProfileEditForm.css";
 import session from "../../utils/Session";
 
@@ -12,12 +9,6 @@ class ProfileEditForm extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    //this.toggle = this.toggle.bind(this);
-    // this.state = {
-    //   activeTab: '1',
-    //   name: "",
-    //   profile: this.props.profile
-    // };
     this.state = this.props.profile;
 
   }
@@ -25,6 +16,15 @@ class ProfileEditForm extends Component {
   // componentDidMount() {
   //  this.setState(this.props.profile);
   // }
+
+  selectFile = event => {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onloadend = () => {
+        const base64data = reader.result;
+        this.setState({ profilePic: base64data })
+    }
+  }
 
   handleInputChange = event => {
     let value = event.target.value;
@@ -52,13 +52,13 @@ class ProfileEditForm extends Component {
           <Col md="4" className="imgCol">
             <Card className="member-card">
               <CardImg src="http://via.placeholder.com/640x770" />
-              <CardBody>
-                <CardText>Name: {session.get("user").name}</CardText>
-                <CardText>Gender: {session.get("user").gender}</CardText>
-                <CardText>Age: </CardText>
-                <CardText>City: {session.get("user").city}</CardText>
-                <CardText>State: {session.get("user").state}</CardText>
-                <CardText>Zip Code: {session.get("user").zip}</CardText>
+              <CardBody className="card-bod">
+                <CardText className="car-text"><span className="val-name"><h1 className="user-name">{session.get("user").name}</h1></span></CardText>
+                <CardText className="car-text">Gender: <span className="val-name">{session.get("user").gender}</span></CardText>
+                <CardText className="car-text">Age: </CardText>
+                <CardText className="car-text">City: <span className="val-name">{session.get("user").city}</span></CardText>
+                <CardText className="car-text">State: <span className="val-name">{session.get("user").state}</span></CardText>
+                <CardText className="car-text">Zip Code: <span className="val-name">{session.get("user").zip}</span></CardText>
 
               </CardBody>
             </Card>
@@ -290,8 +290,19 @@ class ProfileEditForm extends Component {
                     <Input type="textarea" onChange={this.handleInputChange} name="description"></Input>
                   </Row>
                   <br></br>
+              <FormGroup >
+                <Label className="labName">Upload Profile Photo</Label>
+                <Col>
+                  <Input onChange={this.selectFile} type="file" name="profilePic" />
+
+                </Col>
+              </FormGroup>
+              <br/><br/>
                   <Button type="submit">Save</Button>
+
+              
                 </Form>
+
 
         
                 <Row>

@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from "react-router-dom";
+import utils from "../../utils/utils";
 import "./MessageList.css";
 
-const imageStyle = {
-    height: "150px",
-    width: "150px"
-}
 
-const color = {
-    color: "red"
-}
 
 
 
@@ -28,25 +22,27 @@ class MessagesList extends Component {
 
     render() {
         return (
-            <div className="messageL">
-                <Container >
+            <div>
+                <Container>
                     <div>
                         {this.props.list.map((message, i) => {
                             return (
                                 <Row key={message._id}>
-                                    <Col><img  style={imageStyle}src="http://via.placeholder.com/6500x700" alt="examplePic"></img>
-                                        <Link to="#" onClick={this.handleMessageClick} alt="link"><h4 style={color} data-id={message._id} data-name={message.otherUserName}>{message.otherUserName}</h4></Link>
+                                    <Col><img className="imageStyle" src={utils.getImage(message.profilePic)} alt="profile pictur"></img>
+                                        <div className="user-name">
+                                            <Link to="#" onClick={this.handleMessageClick} alt="link"><h4 className="color" data-id={message._id} data-name={message.otherUserName}>{message.otherUserName}</h4></Link>
+                                        </div>
                                     </Col>
-                                    
+
                                 </Row>
-                                
+
                             )
                         })}
-                       
-                    </div>
-                    
 
-                    )
+                    </div>
+
+
+
 
                 </Container>
 

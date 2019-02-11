@@ -9,7 +9,7 @@ export default {
     "wantChildren": ["No", "Definitely", "Someday"],
     "educationLevel": ["High School", "Some College", "Associates degree", "Bachelor's degree", "Graduate degree", "PhD/Post Doctoral"],
     "religion": ["Christian", "Catholic", "Jewish", "Islam", "Buddhist", "Hindu", "Jain", "Agnostic", "Athiest", "Other"],
-    "drinkingHabits": ["Frequently", "Socially", "Rarely", "Never"],
+    "drinkingHabits": ["Frequently", "Socially", "Rarely", "Never", "Never, but I tolerate drinking", "Never, I can't stand drinking"],
     "smokingHabits": ["Frequently", "Socially", "Rarely", "Never, but I tolerate smoking", "Never, I can't stand smoking"],
     "bodyType": ["Skinny", "Athletic", "Average", "Chubby", "Curvy"],
     "eatingHabits": ["Eat Anything", "Healthy", "Paleo", "Vegetarian", "Vegan", "Macrobiotic", "Kosher", "Halal", "Other"],

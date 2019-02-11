@@ -1,0 +1,15 @@
+.imageStyle {
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    margin-left: 82px;
+}
+
+.user-name {
+    text-align: center;
+}
+
+.color {
+    color: #00CED1;
+}
+

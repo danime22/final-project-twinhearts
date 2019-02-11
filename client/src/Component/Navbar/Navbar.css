@@ -25,10 +25,13 @@
     /* background: lightblue; */
     margin: 0.5em;
     width: 250px;
-    text-align: center;
+    /* text-align: center; */
 }
 
-
+.logoPic {
+    height: 100px;
+    width: 140px;
+}
 
 
 .form-been {

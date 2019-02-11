@@ -1,17 +1,12 @@
 import React from 'react';
 import mainLogo from "../../Photos/clipart361312.png";
 import { Link } from "react-router-dom";
-import { Nav, NavItem, NavLink} from 'reactstrap';
+import { Nav, NavLink } from 'reactstrap';
+import utils from "../../utils/utils";
+import session from "../../utils/Session";
 import "./Navbar.css";
 
 
-
-
-
-const logoPic = {
-    height: "100px",
-    width: "140px"
-}
 
 function Navbar() {
 
@@ -19,7 +14,7 @@ function Navbar() {
         <div>
             <Nav className="navbar navbar-expand-md  navbar-light">
 
-                <NavLink className="navbar-brand" href="#"><img style={logoPic} className="logoImage" src={mainLogo} alt="mainlogo" /></NavLink>
+                <NavLink className="navbar-brand" href="#"><img className="logoPic"  src={mainLogo} alt="mainlogo" /></NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span className="navbar-toggler-icon"></span></button>
 
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
@@ -53,7 +48,7 @@ function Navbar() {
                             </Link>
                         </li>
 
-                      
+
 
                         <li className="nav-item">
 
@@ -68,15 +63,20 @@ function Navbar() {
   </Link></h3>
                         </li>
 
+                        <li className="nav-item">
+
+                            <div>
+                                <img className="user-photo" src={utils.getImage((session.get("user").profile ? session.get("user").profile.profilePic : "default")) } alt="profilePic"></img>
+                            </div>
+
+                        </li>
+
 
 
                     </ul>
                 </div>
 
 
-                <NavItem>
-
-                </NavItem>
             </Nav>
 
 

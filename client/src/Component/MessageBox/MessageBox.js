@@ -3,12 +3,6 @@ import { Container, Row, Col, Label, Button, Input, Form, FormGroup } from 'reac
 import session from "../../utils/Session";
 import "./MessageBox.css";
 
-const textArea = {
-    width: "100%"
-}
-
-
-
 class MessageBox extends Component {
 
     constructor(props) {
@@ -26,9 +20,8 @@ class MessageBox extends Component {
         this.setState({
             [name]: value
         });
-
-
     }
+
 
     handleSend = (event) => {
         event.preventDefault();
@@ -37,20 +30,24 @@ class MessageBox extends Component {
     }
 
     getMessageForm() {
-        if(this.props.name || (this.state.currentName && this.state.currentName.length > 0) ){
+        if (this.props.name || (this.state.currentName && this.state.currentName.length > 0)) {
             return (
                 <Form onSubmit={this.handleSend}>
-                <FormGroup>
-                    <Label for="exampleText">Type here...</Label>
-                    <Input value={this.state.text} onChange={this.handleInputChange} type="textarea" name="text" style={textArea} />
-                    <Button className="button" type="submit">Send</Button>
-                </FormGroup>
-            </Form>
+
+                    <Row>
+                        <div className="textAre">
+                            <Label for="exampleText">Type here...</Label>
+                            <Input value={this.state.text} onChange={this.handleInputChange} type="textarea" name="text" id="exampleText" />
+                            <br></br>
+                            <Button className="button" type="submit">Send</Button>
+                        </div>
+                    </Row>
+                </Form>
             )
         }
         else {
             return (
-                <h1>You don't have any coversations</h1>
+                <h5>Start Conversation</h5>
             )
         }
     }
@@ -59,25 +56,32 @@ class MessageBox extends Component {
         return (
             <div className="messageB">
                 <h1>{this.props.name}</h1>
-                <Container >
+                <Container className="over">
                     {this.props.list.map((message, i) => {
                         return (
-                            <Row className="row-chat" key={i}>
-                                <Col xs="6">
-                                    <p className="currentUser">{session.get("user")._id !== message.userId ? message.text : ""}</p>
-                                </Col>
-                                <Col xs="6">
-                                    <p className="speech-bubble-ds">{session.get("user")._id === message.userId ? message.text : ""}</p>
-                                    <div class="speech-bubble-ds-arrow"></div>
-                                </Col>
-                            </Row>
+                            <div key={i} className="chatbox-div">
 
+                                <Row className="row-chat" key={i}>
+
+                                    <Col xs="6">
+                                        <p className="currentUser">{session.get("user")._id !== message.userId ? message.text : ""}</p>
+                                    </Col>
+                                    <Col xs="6">
+                                        <p className="speech-bubble-ds">{session.get("user")._id === message.userId ? message.text : ""}</p>
+
+                                    </Col>
+                                </Row>
+
+                            </div>
                         )
 
                     })}
                     <br></br><br></br>
-                    {this.getMessageForm()}
+                    
+
                 </Container>
+                {this.getMessageForm()}
+            
 
             </div>
 
