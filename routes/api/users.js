@@ -8,9 +8,11 @@ router.route("/login")
 router.route("/register")
 .post(usersController.create)
 
-router.route("/onlineUsers/:currentUserId")
-.get(usersController.onlineUsers);
+router.route("/onlineUsers")
+.post(usersController.onlineUsers);
 
+router.route("/img/:id")
+.get(usersController.img);
 
 router.route("/saveProfile")
 .post(usersController.saveProfile);

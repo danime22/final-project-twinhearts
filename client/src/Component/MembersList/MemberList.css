@@ -1,3 +1,34 @@
+.memberStyle {
+    box-shadow: 0  15px 25px rgba(0,0,0,5);
+}
+
+.fontName {
+    font-size: 22px;
+    font-family: Times, New Roman, Times, serif;
+    color: #99FFFF;
+}
+
+.fontText {
+    color: #FFF8DC;
+    font-family: Times, New Roman, Times, serif;
+    line-height: 80%;
+    font-size: 18px;
+
+}
+
+.cardContainer {
+    margin: 25vh auto 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cardMember {
+    background: #007bff;
+    margin: 0.5em;
+}
+
 .divIcon {
     display: flex;
     flex-direction: row;
@@ -20,5 +51,9 @@
  height: 151px;
  width: 140px;
 
+}
 
+.imgIcon {
+    width: 35px;
+    height: 35px;
 }

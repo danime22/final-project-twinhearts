@@ -10,8 +10,8 @@ export default {
 
 
 
-    onlineUsers: (userId) => {
-        return axios.get("/api/users/onlineUsers/" + userId);
+    onlineUsers: (data) => {
+        return axios.post("/api/users/onlineUsers", data);
     },
 
     saveProfile: (data) => {

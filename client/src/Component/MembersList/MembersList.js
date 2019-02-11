@@ -4,74 +4,9 @@ import { Container, Card, CardBody, CardTitle, CardImg, CardSubtitle } from 'rea
 import session from "../../utils/Session";
 import API from "../../utils/API";
 import "../MembersList/MemberList.css";
-import exampleImage from "../../Photos/example.jpg";
+import utils from "../../utils/utils";
 
-
-var moment = require("moment");
-
-
-
-const memberStyle = {
-    boxShadow: "0  15px 25px rgba(0,0,0,5)",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "20px"
-}
-
-const fontName = {
-    fontSize: "22px",
-    fontFamily: "Times, New Roman, Times, serif",
-    color: "#99FFFF"
-
-}
-
-const fontText = {
-    color: "#F8F8F8",
-    fontFamily: "Times, New Roman, Times, serif",
-    lineHeight: "80%",
-    fontSize: "18px"
-
-
-}
-
-const cardContainer = {
-
-    margin: "25vh auto 0",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center"
-
-}
-
-const cardMember = {
-    background: "#007bff",
-    margin: "0.5em",
-    // width: "300px",
-
-
-}
-
-
-
-const buttonDiv = {
-    padding: "5px",
-    margin: "5px 15px"
-}
-
-
-
-const memberContainer = {
-    // background: "rgba(0,204,153, 0.5)",
-}
-
-
-const imgIcon = {
-    width: "35px",
-    height: "35px",
-
-}
-
+const moment = require("moment");
 
 
 class MembersList extends Component {
@@ -132,42 +67,29 @@ class MembersList extends Component {
         return "/profile/" + userId;
     }
 
-    getMessagePath(userId) {
-        return "/messages/" + userId;
-    }
-
-    getAge(birthdate) {
-
-        let now = moment();
-        let bday = moment(birthdate, "YYYYMMDD");
-
-        console.log(now + "/" + bday);
-
-    
-        return now.diff(bday, "years", false);
-    }
+ 
 
 
 
     render() {
         return (
 
-            <div style={memberContainer}>
+            <div>
 
-                <Container style={cardContainer}>
+                <Container className="cardContainer">
                     {this.props.list.map((member, i) => {
                         return (
-                            <Card key={member._id} style={cardMember}>
-                                <CardBody style={memberStyle}>
-                                    <CardTitle><p style={fontName}>{member.name}</p></CardTitle>
-                                    <CardSubtitle><p style={fontText}>{member.gender}</p></CardSubtitle>
-                                    <CardSubtitle><p style={fontText}>{member.state}</p></CardSubtitle>
-                                    <CardSubtitle><p style={fontText}>Age: {this.getAge(member.birthday)}</p></CardSubtitle>
-                                    <Link to={this.getProfilePath(member._id)} className={window.location.pathname === this.getProfilePath(member._id) ? "nav-link active" : "nav-link"}><CardImg  className="profileImg" src={exampleImage} /> </Link>
-                                    <div className="divIcon" style={buttonDiv}>
+                            <Card key={member._id} className="cardMember">
+                                <CardBody className="memberStyle">
+                                    <CardTitle><p className="fontName">Name: {member.name}</p></CardTitle>
+                                    <CardSubtitle><p className="fontText">Gender: {member.gender}</p></CardSubtitle>
+                                    <CardSubtitle><p className="fontText">State: {member.state}</p></CardSubtitle>
+                                    <CardSubtitle><p className="fontText">Age: {utils.getAge(member.birthday)}</p></CardSubtitle>
+                                    <Link to={this.getProfilePath(member._id)} className={window.location.pathname === this.getProfilePath(member._id) ? "nav-link active" : "nav-link"}><CardImg  className="profileImg" src={utils.getImage((member.profile ? member.profile.profilePic : "default")) } /> </Link>
+                                    <div className="divIcon" >
                                     
-                                        <div className="icon"><Link to={this.getMessagePath(member._id)} className={window.location.pathname === this.getMessagePath(member._id) ? "nav-link active" : "nav-link"}><img src="https://img.icons8.com/color/48/000000/speech-bubble.png" style={imgIcon}alt="icon"/></Link></div>
-                                        <div className="icon-fav"><img  style={imgIcon} data-id={member._id} onClick={this.handleFavoriteClick} src={this.getFavIcon(member._id)} alt="fav"></img></div>
+                                        <div className="icon"><Link to={utils.getMessagePath(member._id)} className={window.location.pathname === utils.getMessagePath(member._id) ? "nav-link active" : "nav-link"}><img src="https://img.icons8.com/color/48/000000/speech-bubble.png" className="imgIcon" alt="icon"/></Link></div>
+                                        <div className="icon-fav"><img  className="imgIcon" data-id={member._id} onClick={this.handleFavoriteClick} src={this.getFavIcon(member._id)} alt="fav"></img></div>
                       
                                     </div>
 

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.search-div {
+    background: #2F4F4F;
+    margin: 25vh auto 5;
+    padding: 3.5em;
+    
+}
+
+.search-container {
+color: white;
+font-weight: bold;
+font-size: 18px;
+text-align: center;
+
+}
+
+.title-search {
+    color: #00CED1;
+    font-family: 'PT Serif', serif;
+}
+
+.search-col {
+background-color: #696969;
+}
+
+.search-result {
+    margin: 2px;
+    border: 2px solid white;
+}
+
+.box-form {
+    width: 130px;
+    float: left
+}
+
+.buton-back {
+    background: #00CED1;
+    width: 200px;
+    font-size: 18px;
+}
+.age-form {
+    width: 80px;
+    margin: 25px;
+}

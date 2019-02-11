@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+.fav-container {
+    background-color: #2F4F4F;
+    margin-top: -200px !important;
+
+   
+}
+
+.fav-title {
+    font-family: 'Merriweather', serif;
+    color: #00BFFF;
+    font-weight: bold;
+    text-align: center;
+margin-top: 20px;
+}
+

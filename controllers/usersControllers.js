@@ -1,5 +1,8 @@
 const db = require("../models");
 const axios = require("axios");
+const fs = require("fs");
+const uuid = require("uuid/v1");
+const path = require("path");
 //const APIKEY = "2HU64PyyHRymqDKkKwNvWuFTg6GAn7AndKViBIWr7TXJyjvlj6IeLMj03t7RdyZr"
 const mongoose = require("mongoose");
 
@@ -15,14 +18,13 @@ module.exports = {
   },
 
   onlineUsers: function (req, res) {
-    console.log("getting all users but: " + req.params.currentUserId);
-    db.Users.find({ "_id": { $ne: req.params.currentUserId } })
+  
+    db.Users.find({ "_id": { $ne: req.params.currentUserId }, gender: {$in: req.body.targetGender}, targetGender: req.body.gender })
       .then(dbModel => res.json(dbModel))
       .catch(err => console.log(err));
   },
 
   addFavorite: function (req, res) {
-    console.log(`adding fav: ${req.body.userId}/${req.body.favUserId}`);
     db.Users.updateOne(
       { _id: mongoose.Types.ObjectId(req.body.userId) },
       { $push: { favorites: mongoose.Types.ObjectId(req.body.favUserId) } }
@@ -32,7 +34,6 @@ module.exports = {
   },
 
   removeFavorite: function (req, res) {
-    console.log(`removing fav: ${req.body.userId}/${req.body.favUserId}`);
     db.Users.updateOne(
       { _id: mongoose.Types.ObjectId(req.body.userId) },
       { $pull: { favorites: req.body.favUserId } }
@@ -81,7 +82,22 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
+  img: function (req, res) {
+    res.set('Content-Type', 'image/png');
+    res.sendFile(path.resolve(__dirname + "/../img/" + req.params.id));
+  },
+
   saveProfile: function (req, res) {
+    //first see if they uploaded a profile pic
+    if(req.body.profile.profilePic && req.body.profile.profilePic.length > 0) {
+      let file = req.body.profile.profilePic
+      let fileName = uuid();
+      let parts = file.split(",");
+      let buf = Buffer.from(parts[1], 'base64');
+      fs.writeFile("./img/"+fileName, buf, (err) => { console.log(err) });
+      req.body.profile.profilePic = fileName;
+    }
+
     console.log("saving profile for" + req.body.id);
     db.Users.findOneAndUpdate({ _id: req.body.id }, 
       { $set: { profile: req.body.profile }}

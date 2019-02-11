@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Navbar from "../../Component/Navbar/Navbar";
 import MembersList from "../../Component/MembersList/MembersList";
+import {Container} from "reactstrap";
+import "./Favorite.css";
 import API from "../../utils/API";
 import session from "../../utils/Session";
 
@@ -8,40 +10,37 @@ import session from "../../utils/Session";
 
 class FavoritePage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state = {favorites: []};
+        this.state = { favorites: [] };
     }
 
     componentDidMount() {
         let user = session.get("user");
         API.favoriteUsers(user._id).then(res => {
-            console.log(JSON.stringify(res));
+            this.setState({ favorites: res.data });
 
-            this.setState({favorites: res.data});
-
-            // if successful, redirect to the Members online search.
-            
         })
-        .catch(err => {
-            console.log(JSON.stringify(err));
-
-            // this.setState({ errorMessage: "User already exists." });
-        });
+            .catch(err => {
+                console.log(JSON.stringify(err));
+            });
 
     }
 
-
-    
-
-    
     render() {
         return (
 
             <div>
-            <Navbar />
-            <MembersList list={this.state.favorites}/>
+                <Navbar />
+                <Container>
+                <h1 className="fav-title">Favorites</h1>
+                <div className="fav-container">
+
+                    <MembersList list={this.state.favorites} />
+                </div>
+                </Container>
+
             </div>
         );
     };

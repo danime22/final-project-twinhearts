@@ -31,7 +31,8 @@
     "react-dom": "^16.7.0",
     "react-id-swiper": "^1.6.8",
     "react-swipe": "^6.0.4",
-    "swipe-js-iso": "^2.1.5"
+    "swipe-js-iso": "^2.1.5",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "concurrently": "^4.1.0"

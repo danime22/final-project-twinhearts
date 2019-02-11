@@ -47,7 +47,8 @@ module.exports = {
                                             _id: dbMessages[i]._id,
                                             user1Id: dbMessages[i].user1Id,
                                             user2Id: dbMessages[i].user2Id,
-                                            otherUserName: dbUsers[j].name
+                                            otherUserName: dbUsers[j].name,
+                                            profilePic: dbUsers[j].profile.profilePic
                                         }
                                     )
                                     break;

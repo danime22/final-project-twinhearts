@@ -18,8 +18,8 @@ class MembersOnlinePage extends Component {
     }
 
     componentDidMount() {
-        let userId = session.get("user")._id;
-        API.onlineUsers(userId)
+        let user = session.get("user");
+        API.onlineUsers({userId: user._id, targetGender: user.targetGender, gender: user.gender})
             .then(res => {
                 this.setState({ members: res.data });
             })

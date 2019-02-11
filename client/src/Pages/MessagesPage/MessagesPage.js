@@ -15,12 +15,13 @@ const containerStyle = {
 
 const rowStyle = {
   padding: "0.5em",
-  marginBottom: "10px"
+  marginBottom: "10px",
 
 }
 
 const colStyle = {
   margin: "0.5em",
+  height: "400px",
   alignItems: "center",
 
 }
@@ -40,7 +41,21 @@ export default class MessagesPage extends React.Component {
       currentName: "",
       currentMessageId: ""
     };
+
+    this.timer = null;
   }
+
+  reloadMessages = () => {
+    console.log("reloading");
+    if(this.state.currentMessageId && this.state.currentMessageId.length > 0) {
+      this.displayMessage(this.state.currentMessageId, this.state.currentName);
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   // DD: get the user on the message to send.
   componentDidMount() {
     let user = session.get("user");
@@ -60,6 +75,7 @@ export default class MessagesPage extends React.Component {
                 currentName: m.otherUserName,
                 currentMessageId: m._id
               });
+              this.timer = setInterval(this.reloadMessages, 2000);
             });
 
         } else { // we don't have messages with this user so we need to create.
@@ -79,22 +95,13 @@ export default class MessagesPage extends React.Component {
                 let m = this.getMessageByUserId(this.props.match.params.userId);
                 API.getMessages(newMessageId)
                   .then((res4) => {
-                    var x =
-                    {
-                      messagesList: messageList,
-                      currentMessages: res4.data.messages,
-                      currentName: m.otherUserName,
-                      currentMessageId: newMessageId
-                    };
-                    console.log("state:********************");
-                    console.log(JSON.stringify(x));
-
                     this.setState({
                       messagesList: messageList,
                       currentMessages: res4.data.messages,
                       currentName: m.otherUserName,
                       currentMessageId: newMessageId
                     });
+                    this.timer = setInterval(this.reloadMessages, 2000);
                   });
               });
             });
@@ -103,15 +110,18 @@ export default class MessagesPage extends React.Component {
 
       } else {
         this.setState({ messagesList: res.data });
+        this.timer = setInterval(this.reloadMessages, 2000);
       }
-
-
     })
       .catch(err => {
         console.log(JSON.stringify(err));
 
       });
+
+
   }
+
+  
 
 
   onSend = (text) => {
@@ -185,6 +195,7 @@ export default class MessagesPage extends React.Component {
         <Container style={containerStyle}>
 
           <Row style={rowStyle}>
+
             <Col sm="4">
               <MessageList list={this.state.messagesList} onMessageSelect={this.displayMessage} />
             </Col>
