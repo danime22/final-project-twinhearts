@@ -41,9 +41,6 @@ class MessagesList extends Component {
 
                     </div>
 
-
-
-
                 </Container>
 
             </div>

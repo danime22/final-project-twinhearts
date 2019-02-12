@@ -9,6 +9,11 @@ import couplePic6 from "../../Photos/couple6.jpg";
 import couplePic7 from "../../Photos/couple7.jpg";
 import couplePic8 from "../../Photos/couple8.jpg";
 import couplePic9 from "../../Photos/couple9.jpg";
+import couplePic10 from "../../Photos/couple10.jpg";
+import couplePic11 from "../../Photos/couple11.jpg";
+import couplePic12 from "../../Photos/couple12.jpg";
+import couplePic13 from "../../Photos/couple13.jpg";
+import couplePic14 from "../../Photos/couple14.jpg";
 import "./Swiper.css";
 
 const name = {
@@ -92,6 +97,21 @@ export default class Default extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div className="details">
+                                <h3 style={name}>Steven and Alice</h3>
+                            </div>
+                            <div className="imgBx">
+                                <img src={couplePic10} alt="couple"></img>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                            <div className="details">
                                 <h3 style={name}>Coleman and Angel</h3>
                             </div>
                             <div className="imgBx">
@@ -101,6 +121,68 @@ export default class Default extends Component {
                         </div>
                     </div>
                 </div>
+
+
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                            <div className="details">
+                                <h3 style={name}>Steven and Alice</h3>
+                            </div>
+                            <div className="imgBx">
+                                <img src={couplePic11} alt="couple"></img>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                            <div className="details">
+                                <h3 style={name}>Steven and Alice</h3>
+                            </div>
+                            <div className="imgBx">
+                                <img src={couplePic12} alt="couple"></img>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                            <div className="details">
+                                <h3 style={name}>Steven and Alice</h3>
+                            </div>
+                            <div className="imgBx">
+                                <img src={couplePic13} alt="couple"></img>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                            <div className="details">
+                                <h3 style={name}>Steven and Alice</h3>
+                            </div>
+                            <div className="imgBx">
+                                <img src={couplePic14} alt="couple"></img>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                
 
 
                 <div className="swiper-container">

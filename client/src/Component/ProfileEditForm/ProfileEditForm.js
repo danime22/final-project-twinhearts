@@ -259,11 +259,11 @@ class ProfileEditForm extends Component {
                     <Col md={6}>
                       <FormGroup>
                         <Label className="labelName">Are you willing to relocate?</Label>
-                        <Input value={this.state.willingToRelocate} type="select" name="willingToRelocate" id="exampleSelect">
+                        <Input value={this.state.willingToRelocate} onChange={this.handleInputChange} type="select" name="willingToRelocate" id="exampleSelect">
                           <option key={99}></option>
                           {options.relocate.map((relocate, i) => {
                             return (
-                              <option key={i} value={relocate} onChange={this.handleInputChange}>{relocate}</option>
+                              <option key={i} value={relocate} >{relocate}</option>
                             )
                           })}
 
