@@ -23,7 +23,7 @@ class ProfileEditForm extends Component {
     reader.readAsDataURL(event.target.files[0]);
     reader.onloadend = () => {
         const base64data = reader.result;
-        this.setState({ profilePic: base64data })
+        this.setState({ profilePicData: base64data })
     }
   }
 
@@ -31,7 +31,10 @@ class ProfileEditForm extends Component {
     let value = event.target.value;
     const name = event.target.name;
 
+ 
+
     this.setState({
+
       [name]: value
     });
   }
@@ -95,7 +98,7 @@ class ProfileEditForm extends Component {
                     <Col md={6}>
                       <FormGroup>
                         <Label className="labelName">Height</Label>
-                        <Input value={this.state.height} onChange={this.handleInputChange} type="select" name="height" id="exampleSelect">
+                        <Input  onChange={this.handleInputChange} value={this.state.height} type="select" name="height" id="exampleSelect">
                           <option key={99}></option>
                           {options.height.map((height, i) => {
                             return (
@@ -228,7 +231,7 @@ class ProfileEditForm extends Component {
                     <Col md={6}>
                       <FormGroup>
                         <Label className="labelName">What is your salary?</Label>
-                        <Input onChange={this.handleInputChange} type="select" name="salary" id="exampleSelect">
+                        <Input onChange={this.handleInputChange} value={this.state.salary}type="select" name="salary" id="exampleSelect">
                           <option key={99}></option>
                           {options.salary.map((salary, i) => {
                             return (
@@ -256,7 +259,7 @@ class ProfileEditForm extends Component {
                     <Col md={6}>
                       <FormGroup>
                         <Label className="labelName">Are you willing to relocate?</Label>
-                        <Input type="select" name="willingToRelocate" id="exampleSelect">
+                        <Input value={this.state.willingToRelocate} type="select" name="willingToRelocate" id="exampleSelect">
                           <option key={99}></option>
                           {options.relocate.map((relocate, i) => {
                             return (
@@ -271,12 +274,12 @@ class ProfileEditForm extends Component {
 
                     <Col md={6}>
                       <FormGroup>
-                        <Label className="labelName">Eating habbits</Label>
-                        <Input type="select" name="eating" id="exampleSelect">
+                        <Label className="labelName">Eating habits</Label>
+                        <Input onChange={this.handleInputChange} value={this.state.eating} type="select" name="eating" id="exampleSelect">
                           <option key={99}></option>
-                          {options.eatingHabits.map((eatingHabits, i) => {
+                          {options.eatingHabits.map((eatingHabit, i) => {
                             return (
-                              <option key={i} value={eatingHabits} onChange={this.handleInputChange}>{eatingHabits}</option>
+                              <option key={i} value={eatingHabit} >{eatingHabit}</option>
                             )
                           })}
 
@@ -288,7 +291,7 @@ class ProfileEditForm extends Component {
                   <Row>
                     <Label className="labelName">Something about yourself</Label>
 
-                    <Input type="textarea" onChange={this.handleInputChange} name="description"></Input>
+                    <Input type="textarea" value={this.state.description} onChange={this.handleInputChange} name="description"></Input>
                   </Row>
                   <br></br>
               <FormGroup >

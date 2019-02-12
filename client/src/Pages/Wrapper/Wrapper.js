@@ -45,8 +45,8 @@ class WrapPage extends Component {
                         this.props.history.push("/onlineMembers");
                     } else {
                         // TODO handle better
-alert("not log in")
-                        
+                        alert("not log in")
+
                     }
 
                 }
@@ -62,7 +62,7 @@ alert("not log in")
                 <Container style={box}>
                     <Container className="container-logo">
                         <div className="logo-name">
-                            <img src={logo} alt="logo"></img>
+                            <img className="wrap-logo" src={logo} alt="logo"></img>
                         </div>
 
 

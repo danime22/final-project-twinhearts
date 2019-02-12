@@ -10,7 +10,7 @@ export default {
     },
 
     getImage: (imageId) => {
-        return window.location.protocol + "//" + window.location.hostname + ":" + (process.env.PORT || "3018") + "/api/users/img/" + imageId;
+        return window.location.protocol + "//" + window.location.hostname + ":" + (process.env.PORT || "3018") + "/api/images/" + imageId;
     },
 
     getMessagePath: (userId) => {

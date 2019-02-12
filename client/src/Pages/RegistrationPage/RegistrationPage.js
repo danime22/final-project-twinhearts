@@ -84,7 +84,6 @@ class RegistrationPage extends Component {
         return (
 
             <div>
-                <ErrorMessage message={this.state.errorMessage} />
                 <RegistrationForm initialState={this.state.formState} onRegister={this.handleRegister} />
             </div >
         )
