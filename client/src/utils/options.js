@@ -4,7 +4,7 @@ export default {
     "salary": ["Less Than $25,000", "$25,000", "$35,000", "$50,000", "$75,000", "$100,000 to $150,000", "$150,001 +"],
     "ethnicity": ["White/Caucasian", "Black/African", "Latino/Hispanic", "Native American", "Middle Eastern", "Pacific Islander", "East Indian", "Other"],
     "pets": ["Yes", "No, but not sure if want some", "No, but I want some"],
-    "height": ["3'0 to 4'0", "4'0 to 5'0", "5'0 to 6'0", "6'0 and up" ],
+    "height": ["5'0\"", "5'1\"", "5'2\"", "5'3\"", "5'4\"", "5'5\"", "5'6\"", "5'7\"", "5'8\"", "5'9\"", "5'10\"", "5'11\"", "6'0\"", "6'1\"", "6'2\"", "6'3\"", "6'4\"", "6'5\"", "6'6\"", "and up"],
     "hasChildren": ["No", "Yes - live away from home", "Yes - sometimes live at home", "Yes - live at home"],
     "wantChildren": ["No", "Definitely", "Someday"],
     "educationLevel": ["High School", "Some College", "Associates degree", "Bachelor's degree", "Graduate degree", "PhD/Post Doctoral"],

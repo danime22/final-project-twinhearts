@@ -10,9 +10,9 @@ class ProfilePage extends Component {
         this.state = {};
     }
 
-
-    handleSaveProfile = profile => {
+    saveProfile(profile) {
         let user = session.get("user");
+
         API.saveProfile({
             id: session.get("user")._id,
             profile: profile})
@@ -21,11 +21,27 @@ class ProfilePage extends Component {
                 session.save("user", user);
                 this.props.history.push("/onlineMembers");
             })
-            // .catch(err => {
-            //     console.log(JSON.stringify(err));
+            .catch(err => {
+                 console.log(err);
 
             //     // this.setState({ errorMessage: "User already exists." });
-            // });
+            });
+    }
+
+
+    handleSaveProfile = profile => {
+        if(profile.profilePicData && profile.profilePicData.length > 0){
+            API.saveImage({file: profile.profilePicData})
+                .then(res => {
+                    profile.profilePic = res.data._id;
+                    profile.profilePicData = null;
+                    this.saveProfile(profile);
+                })
+                .catch(err => console.log(err));
+        }
+        else {
+            this.saveProfile(profile);
+        }     
     }
 
 

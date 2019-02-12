@@ -66,7 +66,7 @@ function Navbar() {
                         <li className="nav-item">
 
                             <div>
-                                <img className="user-photo" src={utils.getImage((session.get("user").profile ? session.get("user").profile.profilePic : "default")) } alt="profilePic"></img>
+                                <img className="user-photo" src={utils.getImage((session.get("user").profile.profilePic)) } alt="profilePic"></img>
                             </div>
 
                         </li>

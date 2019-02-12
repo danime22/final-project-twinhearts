@@ -6,7 +6,7 @@ import API from "../../utils/API";
 import "../MembersList/MemberList.css";
 import utils from "../../utils/utils";
 
-const moment = require("moment");
+// const moment = require("moment");
 
 
 class MembersList extends Component {
@@ -67,8 +67,6 @@ class MembersList extends Component {
         return "/profile/" + userId;
     }
 
- 
-
 
 
     render() {
@@ -87,20 +85,13 @@ class MembersList extends Component {
                                     <CardSubtitle><p className="fontText">Age: {utils.getAge(member.birthday)}</p></CardSubtitle>
                                     <Link to={this.getProfilePath(member._id)} className={window.location.pathname === this.getProfilePath(member._id) ? "nav-link active" : "nav-link"}><CardImg  className="profileImg" src={utils.getImage((member.profile ? member.profile.profilePic : "default")) } /> </Link>
                                     <div className="divIcon" >
-                                    
                                         <div className="icon"><Link to={utils.getMessagePath(member._id)} className={window.location.pathname === utils.getMessagePath(member._id) ? "nav-link active" : "nav-link"}><img src="https://img.icons8.com/color/48/000000/speech-bubble.png" className="imgIcon" alt="icon"/></Link></div>
                                         <div className="icon-fav"><img  className="imgIcon" data-id={member._id} onClick={this.handleFavoriteClick} src={this.getFavIcon(member._id)} alt="fav"></img></div>
-                      
                                     </div>
-
                                 </CardBody>
                             </Card>
-
-
                         )
-
                     })}
-
                 </Container>
             </div>
         )

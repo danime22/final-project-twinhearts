@@ -77,5 +77,9 @@ export default {
 
     addMessage: (data) => {
         return axios.post("/api/messages/addMessage", data);
+    },
+
+    saveImage: (data) => {
+        return axios.post("/api/images/save", data);
     }
 }

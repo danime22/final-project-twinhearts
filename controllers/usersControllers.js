@@ -61,12 +61,14 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   findById: function (req, res) {
     db.Users
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   create: function (req, res) {
     console.log("create");
     console.log(req.params.profilePic);
@@ -75,6 +77,7 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   update: function (req, res) {
     db.Users
       .findOneAndUpdate({ _id: req.params.id }, req.body)
@@ -82,21 +85,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  img: function (req, res) {
-    res.set('Content-Type', 'image/png');
-    res.sendFile(path.resolve(__dirname + "/../img/" + req.params.id));
-  },
-
   saveProfile: function (req, res) {
     //first see if they uploaded a profile pic
-    if(req.body.profile.profilePic && req.body.profile.profilePic.length > 0) {
-      let file = req.body.profile.profilePic
-      let fileName = uuid();
-      let parts = file.split(",");
-      let buf = Buffer.from(parts[1], 'base64');
-      fs.writeFile("./img/"+fileName, buf, (err) => { console.log(err) });
-      req.body.profile.profilePic = fileName;
-    }
+   
 
     console.log("saving profile for" + req.body.id);
     db.Users.findOneAndUpdate({ _id: req.body.id }, 

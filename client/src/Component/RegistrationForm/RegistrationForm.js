@@ -29,14 +29,6 @@ const invalid = {
 
 }
 
-const label = {
-    fontColor: "white",
-    fontWeight: "bold"
-}
-
-
-
-
 
 class Registration extends React.Component {
     constructor(props) {
