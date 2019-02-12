@@ -19,7 +19,7 @@ module.exports = {
 
   onlineUsers: function (req, res) {
   
-    db.Users.find({ "_id": { $ne: req.params.currentUserId }, gender: {$in: req.body.targetGender}, targetGender: req.body.gender })
+    db.Users.find({ "_id": { $ne: mongoose.Types.ObjectId(req.params.currentUserId )}, gender: {$in: req.body.targetGender}, targetGender: req.body.gender })
       .then(dbModel => res.json(dbModel))
       .catch(err => console.log(err));
   },
@@ -80,7 +80,7 @@ module.exports = {
 
   update: function (req, res) {
     db.Users
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -90,7 +90,7 @@ module.exports = {
    
 
     console.log("saving profile for" + req.body.id);
-    db.Users.findOneAndUpdate({ _id: req.body.id }, 
+    db.Users.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body.id) }, 
       { $set: { profile: req.body.profile }}
     )
     .then(dbModel => res.json(dbModel))
@@ -102,7 +102,7 @@ module.exports = {
   remove: function (req, res) {
     console.log("delete: " + req.params.id);
     db.Users
-      .findById({ _id: req.params.id })
+      .findById({ _id: mongoose.Types.ObjectId(req.params.id) })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

@@ -158,7 +158,7 @@ class Profile extends Component {
                                         <Col md={6}>
                                             <FormGroup>
                                                 <Label className="labelName">Height: &nbsp;&nbsp;</Label>
-                                                <Label className="labelName"></Label>
+                                                <Label className="labelName">{this.props.user.profile ? this.props.user.profile.height : "Didn't Say"}</Label>
                                             </FormGroup>
                                         </Col>
 
@@ -186,7 +186,7 @@ class Profile extends Component {
                                         <Col md={6}>
                                             <FormGroup>
                                                 <Label className="labelName">Wants Children: &nbsp;&nbsp;</Label>
-                                                <Label className="labelName">{this.props.user.profile ? this.props.user.profile.wantsChildren : "Didn't Say"}</Label>
+                                                <Label className="labelName">{this.props.user.profile ? this.props.user.profile.wantChildren : "Didn't Say"}</Label>
                                             </FormGroup>
                                         </Col>
 

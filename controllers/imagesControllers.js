@@ -1,6 +1,5 @@
 const db = require("../models");
 const mongoose = require("mongoose");
-const fs = require("fs");
 const path = require("path");
 
 // Defining methods for the booksController

@@ -56,6 +56,7 @@ class MessageBox extends Component {
         return (
             <div className="messageB">
                 <h1>{this.props.name}</h1>
+                <h5>Click user name to start chatting</h5>
                 <Container className="over">
                     {this.props.list.map((message, i) => {
                         return (
@@ -77,12 +78,9 @@ class MessageBox extends Component {
 
                     })}
                     <br></br><br></br>
-                    
-
                 </Container>
                 {this.getMessageForm()}
             
-
             </div>
 
         )

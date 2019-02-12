@@ -44,7 +44,7 @@ module.exports = {
                                     dbMessages[i]["otherUserName"] = dbUsers[j].name;
                                     messages.push(
                                         {
-                                            _id: dbMessages[i]._id,
+                                            _id: mongoose.Types.ObjectId(dbMessages[i]._id),
                                             user1Id: dbMessages[i].user1Id,
                                             user2Id: dbMessages[i].user2Id,
                                             otherUserName: dbUsers[j].name,
