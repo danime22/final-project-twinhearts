@@ -5,7 +5,6 @@ const path = require("path");
 // Defining methods for the booksController
 module.exports = {
     save: function (req, res) {
-        console.log(req.body);
         let parts = req.body.file.split(",");
         let buf = Buffer.from(parts[1], 'base64');
         let mime = (parts[0].split(";"))[0].split(":");
