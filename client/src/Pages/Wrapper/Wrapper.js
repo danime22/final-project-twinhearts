@@ -58,16 +58,11 @@ class WrapPage extends Component {
 
     render() {
         return (
-            <div>
-                <Container style={box}>
-                    <Container className="container-logo">
-                        <div className="logo-name">
-                            <img className="wrap-logo" src={logo} alt="logo"></img>
-                        </div>
+            <div className="div-wrap">
+                <Container className="content" style={box}>
 
-
-                    </Container>
                     <div className="sign-box">
+                    <img className="logo" src={logo} alt="logo"/>
                         <Form className="form-div" onSubmit={this.onSubmit}>
 
                             <FormGroup className="group-form">

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 
 h3{
-    /* background-color: yellow; */
     text-align: center;
     font-family: 'Merriweather', serif;
     font-weight: bold;
+
 }
 
 .swiper-container {
@@ -12,9 +12,6 @@ h3{
     padding-top: 47px;
     padding-bottom: 2px;
 
-    /* border: 2px solid red; */
-  
-   
 }
 
 .swiper-slide {
@@ -38,10 +35,10 @@ h3{
 
 
 .details {
-    /* box-sizing: border-box; */
+
     font-size: 20px;
     margin-top: -50px;
-    /* padding: 20px; */
+
 }
   
 

@@ -7,12 +7,29 @@
     
 }
 
+.message-div {
+    background: url("../../Photos/gravel.png");
+}
+
 
 .currentUser {
     background-color: #95F7BA;
     border-radius: 4px;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
     
+}
+
+.message-h {
+    text-align: center;
+    color: red;
+}
+
+.user-message {
+    text-align: center;
+    margin: 15px;
+    padding: 15px;
+    font-weight: bold;
+    color: blue;
 }
 
 

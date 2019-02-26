@@ -105,7 +105,7 @@ class Registration extends React.Component {
     render() {
         const { validated } = this.state;
         return (
-            <div>
+            <div className="divProfile">
 
                 <Container style={containerStyle}>
 

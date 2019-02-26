@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import "./RegistrationPage.css";
 import RegistrationForm from "../../Component/RegistrationForm/RegistrationForm";
-import ErrorMessage from "../../Component/ErrorMessage/ErrorMessage";
 import session from "../../utils/Session";
 
 

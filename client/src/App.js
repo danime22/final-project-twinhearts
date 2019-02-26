@@ -8,6 +8,7 @@ import ViewProfilePage from "./Pages/ViewProfilePage/ViewProfilePage";
 import MessagesPage from "./Pages/MessagesPage/MessagesPage";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import FavoritePage from "./Pages/FavoritePage/FavoritePage";
+import FavoritedMePage from "./Pages/FavoritedMePage/FavoritedMePage";
 
 
 
@@ -29,6 +30,7 @@ class App extends Component {
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/viewProfile" component={ViewProfilePage} />
           <Route exact path="/favorites" component={FavoritePage}  />
+          <Route exact path="/favoritedMe" component={FavoritedMePage}  />
           <Route exact path="/editprofile" component={ProfilePage} />
           <Route exact path="/profile/:userId" component={ViewProfilePage} />
         </Switch>

@@ -7,7 +7,8 @@ module.exports = {
     save: function (req, res) {
         let parts = req.body.file.split(",");
         let buf = Buffer.from(parts[1], 'base64');
-        let mime = (parts[0].split(";"))[0].split(":");
+        let temp = (parts[0].split(";"))
+        let mime = temp[0].split(":");
 
         db.Images
             .create({ mimeType: mime[1], binData: buf })
@@ -32,5 +33,4 @@ module.exports = {
 
 };
 
-"male.png"
-"female.png"
+

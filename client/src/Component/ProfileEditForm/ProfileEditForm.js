@@ -14,10 +14,6 @@ class ProfileEditForm extends Component {
 
   }
 
-  // componentDidMount() {
-  //  this.setState(this.props.profile);
-  // }
-
   selectFile = event => {
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);

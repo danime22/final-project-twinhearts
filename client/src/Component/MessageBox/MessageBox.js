@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Label, Button, Input, Form, FormGroup } from 'reactstrap';
+import { Container, Row, Col, Label, Button, Input, Form } from 'reactstrap';
 import session from "../../utils/Session";
 import "./MessageBox.css";
 
@@ -45,19 +45,16 @@ class MessageBox extends Component {
                 </Form>
             )
         }
-        else {
-            return (
-                <h5>Start Conversation</h5>
-            )
-        }
+
     }
 
     render() {
         return (
-            <div className="messageB">
-                <h1>{this.props.name}</h1>
-                <h5>Click user name to start chatting</h5>
-                <Container className="over">
+            <div className="message-div">
+                <h5 className="message-h">Click name to start chatting</h5>
+                <h1 className="user-message">{this.props.name}</h1>
+
+                <Container className=" message-div over">
                     {this.props.list.map((message, i) => {
                         return (
                             <div key={i} className="chatbox-div">
@@ -80,7 +77,7 @@ class MessageBox extends Component {
                     <br></br><br></br>
                 </Container>
                 {this.getMessageForm()}
-            
+
             </div>
 
         )

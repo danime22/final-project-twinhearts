@@ -40,6 +40,10 @@ router.route("/favorites/:id")
 .get(usersController.getFavorites);
 
 
+router.route("/favoritedMe/:id")
+.get(usersController.favoritedMe);
+
+
 
 
 module.exports = router;

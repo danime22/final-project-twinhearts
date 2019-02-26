@@ -31,7 +31,7 @@ class FavoritePage extends Component {
     render() {
         return (
 
-            <div>
+            <div className="fav-Profile">
                 <Navbar />
                 <Container>
                 <h1 className="fav-title">Favorites</h1>

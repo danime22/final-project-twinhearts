@@ -3,6 +3,7 @@ import Navbar from "../../Component/Navbar/Navbar";
 import MembersList from "../../Component/MembersList/MembersList";
 import API from "../../utils/API";
 import session from "../../utils/Session";
+import "./MembersOnline.css";
 
 class MembersOnlinePage extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class MembersOnlinePage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="membersOnlinePage">
                 <Navbar />
                 <MembersList list={this.state.members} />
             </div>

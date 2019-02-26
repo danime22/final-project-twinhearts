@@ -4,7 +4,7 @@ import MessageList from "../../Component/MessageList/MessageList";
 import MessageBox from "../../Component/MessageBox/MessageBox";
 import API from "../../utils/API";
 import session from "../../utils/Session";
-import { Container, Row, Col, Button, Label, Input } from "reactstrap";
+import { Container, Row, Col} from "reactstrap";
 import "./MessagesPage.css"
 
 

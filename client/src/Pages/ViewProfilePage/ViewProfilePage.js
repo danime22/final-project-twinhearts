@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Profile from "../../Component/Profile/Profile";
-import session from "../../utils/Session";
 import Navbar from "../../Component/Navbar/Navbar";
 
 

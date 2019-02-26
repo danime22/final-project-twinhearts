@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 
+.fav-Profile {
+    background: #2F4F4F;
+    background-attachment: fixed;
+}
+
 .fav-container {
-    background-color: #2F4F4F;
+    /* background-color: #2F4F4F; */
     margin-top: -200px !important;
 
    

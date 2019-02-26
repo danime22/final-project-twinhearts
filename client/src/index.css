@@ -14,7 +14,8 @@ code {
 }
 
 body {
-  background-image: url("../src/Photos/background-image2.jpeg");
+  /* background-image: url("../src/Photos/background-image2.jpeg");
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+  background-color: #2F4F4F;
 }

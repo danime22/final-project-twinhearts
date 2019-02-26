@@ -18,7 +18,8 @@ import "./Swiper.css";
 
 const name = {
     color: "#260CC6",
-    fontSize: "25px"
+    fontSize: "25px",
+    color: "#007bff"
 }
 
 
@@ -97,7 +98,7 @@ export default class Default extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div className="details">
-                                <h3 style={name}>Steven and Alice</h3>
+                                <h3 style={name}>Colin and Claire</h3>
                             </div>
                             <div className="imgBx">
                                 <img src={couplePic10} alt="couple"></img>
@@ -127,7 +128,7 @@ export default class Default extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div className="details">
-                                <h3 style={name}>Steven and Alice</h3>
+                                <h3 style={name}>Hunter and Abigail</h3>
                             </div>
                             <div className="imgBx">
                                 <img src={couplePic11} alt="couple"></img>
@@ -142,7 +143,7 @@ export default class Default extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div className="details">
-                                <h3 style={name}>Steven and Alice</h3>
+                                <h3 style={name}>Maxwell and Allison</h3>
                             </div>
                             <div className="imgBx">
                                 <img src={couplePic12} alt="couple"></img>
@@ -157,7 +158,7 @@ export default class Default extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div className="details">
-                                <h3 style={name}>Steven and Alice</h3>
+                                <h3 style={name}>Paul and Kiara</h3>
                             </div>
                             <div className="imgBx">
                                 <img src={couplePic13} alt="couple"></img>
@@ -172,7 +173,7 @@ export default class Default extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div className="details">
-                                <h3 style={name}>Steven and Alice</h3>
+                                <h3 style={name}>Cody and Katie</h3>
                             </div>
                             <div className="imgBx">
                                 <img src={couplePic14} alt="couple"></img>

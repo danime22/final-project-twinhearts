@@ -1,5 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 
+.div-wrap:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-image: url("../../Photos/couplecollage.jpg");
+   opacity: 0.09;
+    /* opacity: 0.5; */
+    /* filter: alpha(opacity=50); */
+}
+
+.logo {
+    height: 191px;
+    width: 191px;
+    padding:20px;
+}
+
+.content {
+    margin-top:50px;
+    position: relative; 
+    z-index: 2;
+}
+
+
 .whatever {
     
     text-align: center;
@@ -28,8 +55,9 @@ margin: 0.5em;
 }
 
 
+
 .swiper-div {
-    margin-top: 200px;
+    margin-top: -65px;
 }
 .input-div {
     width: 100%;
@@ -66,8 +94,9 @@ h3 {
     padding: 40px;
     background-size: cover;
     box-sizing: border-box;
-    box-shadow: 0  15px 25px rgba(0,0,0,5);
+    box-shadow: 0  25px 200px rgba(0,0,0,5);
     border-radius: 10px;
     text-align: center;
+    margin-top: -126px;
 }
 

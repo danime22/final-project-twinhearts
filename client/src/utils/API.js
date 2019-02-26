@@ -31,6 +31,9 @@ export default {
         return axios.get("/api/users/favorites/" + userId)
     },
 
+    favoritedUser: (userId) => {
+        return axios.get("api/users/favoritedMe/" + userId)
+    },
 
     getUsers: () => {
         return axios.get("/api/users");

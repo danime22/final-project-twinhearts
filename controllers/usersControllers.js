@@ -54,6 +54,13 @@ module.exports = {
   },
 
 
+  favoritedMe: function(req, res) {
+    db.Users.find({favorites:(req.params.id)})
+    .then(dbFavs => res.json(dbFavs))
+    .catch(err => console.log(err))
+  },
+
+
   findAll: function (req, res) {
     db.Users
       .find(res.query)
