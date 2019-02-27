@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../../Component/Navbar/Navbar";
 import MembersList from "../../Component/MembersList/MembersList";
-import {Container} from "reactstrap";
+import { Container } from "reactstrap";
 import API from "../../utils/API";
 import session from "../../utils/Session";
 import "./favorited.css";
@@ -9,21 +9,21 @@ import "./favorited.css";
 
 
 class FavoritedMePage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = { favoritedMe: [] };
-        
+
     }
 
     componentDidMount() {
         let user = session.get("user");
         API.favoritedUser(user._id).then(res => {
-            this.setState({favoritedMe: res.data});
+            this.setState({ favoritedMe: res.data });
         })
-        .catch(err => {
-            console.log(JSON.stringify(err));
-        });
+            .catch(err => {
+                console.log(JSON.stringify(err));
+            });
     }
 
     render() {
@@ -31,12 +31,13 @@ class FavoritedMePage extends Component {
 
             <div>
                 <Navbar />
-                <Container className="favorited-container">
                 <h1 className="fav-me">Favorited Me</h1>
-                <div className="favMe-container">
+                <Container className="favorited-container">
+                    
+                    <div className="favMe-container">
 
-                    <MembersList list={this.state.favoritedMe} />
-                </div>
+                        <MembersList list={this.state.favoritedMe} />
+                    </div>
                 </Container>
 
             </div>

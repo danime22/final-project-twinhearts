@@ -72,7 +72,7 @@ class MembersList extends Component {
     render() {
         return (
 
-            <div>
+            <div className="members-online">
 
                 <Container className="cardContainer">
                     {this.props.list.map((member, i) => {

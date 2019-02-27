@@ -29,6 +29,10 @@
     margin: 0.5em;
 }
 
+.members-online {
+    margin-top: -159px;
+}
+
 .divIcon {
     display: flex;
     flex-direction: row;

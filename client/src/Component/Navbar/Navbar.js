@@ -23,28 +23,28 @@ function Navbar() {
                         <li className="nav-item">
 
                             <Link to="/messages" className={window.location.pathname === "/messages" ? "nav-link active" : "nav-link"}>
-                               Message/
+                               Message /
                             </Link>
                         </li>
 
                         <li className="nav-item">
 
                             <Link to="/search" className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}>
-                                Search/
+                                Search /
                             </Link>
                         </li>
 
                         <li className="nav-item">
 
                             <Link to="/favorites" className={window.location.pathname === "/favorites" ? "nav-link active" : "nav-link"}>
-                                My Favorite/
+                                My Favorite /
                             </Link>
                         </li>
 
                         <li className="nav-item">
 
                         <Link to="/favoritedMe" className={window.location.pathname === "/favoritedMe" ? "nav-link active" : "nav-link"}>
-                            Who Favorited Me/
+                            Who Favorited Me /
                         </Link>
                     </li>
 
@@ -53,7 +53,7 @@ function Navbar() {
                         <li className="nav-item">
 
                             <Link to="/onlineMembers" className={window.location.pathname === "/onlineMembers" ? "nav-link active" : "nav-link"}>
-                                Members/
+                                Members /
                             </Link>
                         </li>
 
@@ -62,7 +62,7 @@ function Navbar() {
                         <li className="nav-item">
 
                             <Link to="/editprofile" className={window.location.pathname === "/editprofile" ? "nav-link active" : "nav-link"}>
-                                Edit Profile/
+                                Edit Profile /
                     </Link>
                         </li>
 

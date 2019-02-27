@@ -3,7 +3,11 @@ import Navbar from "../../Component/Navbar/Navbar";
 import SearchForm from "../../Component/SearchForm/SearchForm";
 import MembersList from "../../Component/MembersList/MembersList";
 import API from "../../utils/API";
-import {Container, Row, Col} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
+
+const searchDiv = {
+    width: "100%"
+}
 
 class Search extends Component {
 
@@ -35,17 +39,18 @@ class Search extends Component {
         return (
             <div>
                 <Navbar />
-                <Container>
-                    <Row>
-                        <Col md="4" className="search-div">
-                            <SearchForm initSearch={this.state.search} onSearch={this.handleSearch} />
-                        </Col>
 
-                        <Col md="8" className="search-div">
-                            <MembersList list={this.state.searchResults} />
-                        </Col>
-                    </Row>
-                </Container>
+
+                <div>
+                    <SearchForm initSearch={this.state.search} onSearch={this.handleSearch} />
+                </div>
+
+                <div>
+                    <MembersList list={this.state.searchResults} />
+                </div>
+
+
+
             </div>
         )
     }

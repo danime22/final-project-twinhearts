@@ -14,7 +14,7 @@ export default {
     "bodyType": ["Skinny", "Athletic", "Average", "Chubby", "Curvy"],
     "eatingHabits": ["Eat Anything", "Healthy", "Paleo", "Vegetarian", "Vegan", "Macrobiotic", "Kosher", "Halal", "Other"],
     "seeking": ["Friends", "Casual Encounters", "Relationship", "Marriage"],
-    "range": ["5", "10", "20", "40", "70", "100", "200"],
+    "range": ["","5", "10", "20", "40", "70", "100", "200"],
     "relocate": ["Yes", "No", "Undecided"],
     "age": [18,19,20,21,22,23]
 }
